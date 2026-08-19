@@ -11,7 +11,7 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <>
+    <div className="antialiased bg-neutral-50 dark:bg-neutral-950 text-neutral-500 dark:text-neutral-300 selection:bg-neutral-200 dark:selection:bg-neutral-700">
       <Outlet />
       <TanStackDevtools
         config={{
@@ -24,6 +24,6 @@ function RootComponent() {
           },
         ]}
       />
-    </>
+    </div>
   )
 }
