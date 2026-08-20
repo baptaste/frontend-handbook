@@ -5,8 +5,8 @@ export const Route = createFileRoute("/")({ component: Home })
 
 function Home() {
   return (
-    <div className="h-screen flex items-center flex-col justify-center">
-      <div className="space-y-10 max-w-prose">
+    <div className="min-h-dvh py-12 flex items-center flex-col justify-center">
+      <div className="space-y-10 max-w-prose p-4">
         <header>
           <h1 className="text-lg font-bold text-neutral-950 dark:text-neutral-50">
             Frontend Handbook
@@ -41,6 +41,9 @@ function Home() {
             I like building fast, polished and maintainable web applications.
             This document describes how I design, build and maintain them.
           </p>
+        </div>
+
+        <div>
           <p>
             You can reach me on
             <a
@@ -66,7 +69,7 @@ function Home() {
 
         <div className="flex">
           <Link
-            to="/"
+            to="/experience"
             className="hover:shimmer shimmer-duration-2000 ml-auto text-neutral-950 dark:text-neutral-50 hover:text-muted-foreground group"
           >
             [ Explore the handbook → ]
