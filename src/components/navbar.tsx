@@ -1,13 +1,23 @@
 import { Link } from "@tanstack/react-router"
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
 import { Navigation } from "./navigation"
+import { cn } from "@/lib/utils"
+import { useLayout } from "./layout"
 
-export function Navbar() {
+export function Navbar({ className }: { className?: string }) {
+  const { setState } = useLayout()
+
   return (
-    <div className="z-navbar sticky top-0 h-14 px-6 border-b border-neutral-200 dark:border-neutral-900 bg-neutral-950 flex items-center justify-between">
+    <div
+      className={cn(
+        "z-navbar sticky top-0 h-14 px-6 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 flex items-center justify-between",
+        className,
+      )}
+    >
       <Link
         to="/"
-        className="lg:dark:hover:text-white text-lg lg:text-base lg:hover:text-neutral-950 dark:text-neutral-50 transition-colors"
+        onClick={() => setState("out")}
+        className="text-neutral-950 dark:text-neutral-50"
       >
         Frontend Handbook
       </Link>

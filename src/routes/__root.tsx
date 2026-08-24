@@ -4,6 +4,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools"
 import { TanStackDevtools } from "@tanstack/react-devtools"
 
 import "../styles.css"
+import { Layout, LayoutProvider } from "@/components/layout"
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -11,19 +12,21 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <div className="overflow-x-hidden antialiased *:bg-neutral-50 *:dark:bg-neutral-950 *:text-neutral-500 *:dark:text-neutral-300 *:selection:bg-neutral-200 *:dark:selection:bg-neutral-700">
-      <Outlet />
-      <TanStackDevtools
-        config={{
-          position: "bottom-right",
-        }}
-        plugins={[
-          {
-            name: "TanStack Router",
-            render: <TanStackRouterDevtoolsPanel />,
-          },
-        ]}
-      />
-    </div>
+    <LayoutProvider>
+      <Layout>
+        <Outlet />
+        <TanStackDevtools
+          config={{
+            position: "bottom-right",
+          }}
+          plugins={[
+            {
+              name: "TanStack Router",
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
+      </Layout>
+    </LayoutProvider>
   )
 }
