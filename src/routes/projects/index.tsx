@@ -1,17 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router"
 import { ArrowRightIcon } from "lucide-react"
-import {
-  Documentation,
-  DocumentationBlock,
-  DocumentationBlockCard,
-  DocumentationBlockHeader,
-  DocumentationBlockInfo,
-  DocumentationBlockList,
-  DocumentationBlockTitle,
-  DocumentationHeader,
-  DocumentationInfo,
-  DocumentationTitle,
-} from "@/components/documentation"
+import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
@@ -21,28 +10,26 @@ export const Route = createFileRoute("/projects/")({
 
 function RouteComponent() {
   return (
-    <Documentation>
-      <DocumentationHeader>
-        <DocumentationTitle>Projects</DocumentationTitle>
-        <DocumentationInfo>
+    <Article.Root>
+      <Article.Header>
+        <Article.Title>Projects</Article.Title>
+        <Article.Info>
           A selection of products and problems I've worked on.
-        </DocumentationInfo>
-      </DocumentationHeader>
+        </Article.Info>
+      </Article.Header>
 
-      <DocumentationBlock>
-        <DocumentationBlockCard>
-          <DocumentationBlockHeader>
-            <DocumentationBlockTitle>
+      <Article.Section>
+        <Article.Card>
+          <Article.SectionHeader>
+            <Article.SectionTitle>
               Tudigo — Investment platform
-            </DocumentationBlockTitle>
-            <DocumentationBlockInfo>
+            </Article.SectionTitle>
+            <Article.Info>
               A complex web application for managing and discovering
               investments.
-            </DocumentationBlockInfo>
-            <DocumentationBlockInfo>
-              Role: Frontend Engineer
-            </DocumentationBlockInfo>
-            <DocumentationBlockList>
+            </Article.Info>
+            <Article.Info>Role: Frontend Engineer</Article.Info>
+            <Article.Tags>
               <Badge variant="outline">Fintech</Badge>
               <Badge variant="outline">React</Badge>
               <Badge variant="outline">TypeScript</Badge>
@@ -50,8 +37,8 @@ function RouteComponent() {
               <Badge variant="outline">Monorepo</Badge>
               <Badge variant="outline">TanStack</Badge>
               <Badge variant="outline">Algolia</Badge>
-            </DocumentationBlockList>
-          </DocumentationBlockHeader>
+            </Article.Tags>
+          </Article.SectionHeader>
 
           <Link to="/projects/investment-platform">
             <Button>
@@ -59,8 +46,8 @@ function RouteComponent() {
               Read case study
             </Button>
           </Link>
-        </DocumentationBlockCard>
-      </DocumentationBlock>
-    </Documentation>
+        </Article.Card>
+      </Article.Section>
+    </Article.Root>
   )
 }

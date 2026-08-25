@@ -1,20 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router"
 import type { ReactNode } from "react"
+import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
-import {
-  Documentation,
-  DocumentationBlock,
-  DocumentationBlockCard,
-  DocumentationBlockHeader,
-  DocumentationBlockHeading,
-  DocumentationBlockInfo,
-  DocumentationBlockList,
-  DocumentationBlockTitle,
-  DocumentationDescription,
-  DocumentationHeader,
-  DocumentationInfo,
-  DocumentationTitle,
-} from "@/components/documentation"
 
 export const Route = createFileRoute("/experience")({
   component: RouteComponent,
@@ -37,35 +24,33 @@ function ExperienceAchievement({
 
 function RouteComponent() {
   return (
-    <Documentation>
-      <DocumentationHeader>
-        <DocumentationTitle>Experience</DocumentationTitle>
-        <DocumentationInfo>
+    <Article.Root>
+      <Article.Header>
+        <Article.Title>Experience</Article.Title>
+        <Article.Info>
           Five years of building frontend products, from individual features to
           complex applications.
-        </DocumentationInfo>
-      </DocumentationHeader>
+        </Article.Info>
+      </Article.Header>
 
-      <DocumentationBlock>
-        <DocumentationBlockHeader>
-          <DocumentationBlockTitle>2023 — today</DocumentationBlockTitle>
-          <DocumentationBlockInfo>
-            Frontend Engineer, Tudigo
-          </DocumentationBlockInfo>
-          <DocumentationBlockList>
+      <Article.Section>
+        <Article.SectionHeader>
+          <Article.SectionTitle>2023 — today</Article.SectionTitle>
+          <Article.Info>Frontend Engineer, Tudigo</Article.Info>
+          <Article.Tags>
             <Badge variant="secondary">Fintech</Badge>
             <Badge variant="secondary">React</Badge>
             <Badge variant="secondary">Monorepo</Badge>
-          </DocumentationBlockList>
-        </DocumentationBlockHeader>
+          </Article.Tags>
+        </Article.SectionHeader>
 
-        <DocumentationDescription>
+        <Article.Description>
           I worked on the frontend of a complex investment platform, with a
           strong focus on usability, performance and maintainability.
-        </DocumentationDescription>
+        </Article.Description>
 
-        <DocumentationBlockHeading>What I worked on</DocumentationBlockHeading>
-        <DocumentationBlockCard>
+        <Article.Heading>What I worked on</Article.Heading>
+        <Article.Card>
           <ExperienceAchievement label="Product">
             Built and evolved user-facing features used across the investment
             platform.
@@ -85,52 +70,48 @@ function RouteComponent() {
           <ExperienceAchievement label="Mentoring">
             Onboarded new developers and helped juniors.
           </ExperienceAchievement>
-        </DocumentationBlockCard>
-      </DocumentationBlock>
+        </Article.Card>
+      </Article.Section>
 
-      <DocumentationBlock>
-        <DocumentationBlockHeader>
-          <DocumentationBlockTitle>2022</DocumentationBlockTitle>
-          <DocumentationBlockInfo>
-            Frontend Engineer, Feelity
-          </DocumentationBlockInfo>
-          <DocumentationBlockList>
+      <Article.Section>
+        <Article.SectionHeader>
+          <Article.SectionTitle>2022</Article.SectionTitle>
+          <Article.Info>Frontend Engineer, Feelity</Article.Info>
+          <Article.Tags>
             <Badge variant="secondary">React Native</Badge>
             <Badge variant="secondary">Angular</Badge>
             <Badge variant="secondary">Mobile Apps</Badge>
-          </DocumentationBlockList>
-        </DocumentationBlockHeader>
+          </Article.Tags>
+        </Article.SectionHeader>
 
-        <DocumentationDescription>
+        <Article.Description>
           I worked on several projects for clients of a digital agency. <br />
           The projects were mainly mobile apps that are heavily focused on the
           IoT, such as a remote configurator for pools or an app for controlling
           connected heated motorcycle gloves. <br /> I also worked on an
           educational web platform for employees designed to support cancer
           screening.
-        </DocumentationDescription>
-      </DocumentationBlock>
+        </Article.Description>
+      </Article.Section>
 
-      <DocumentationBlock>
-        <DocumentationBlockHeader>
-          <DocumentationBlockTitle>2021</DocumentationBlockTitle>
-          <DocumentationBlockInfo>
-            Frontend Engineer, LibNGo
-          </DocumentationBlockInfo>
-          <DocumentationBlockList>
+      <Article.Section>
+        <Article.SectionHeader>
+          <Article.SectionTitle>2021</Article.SectionTitle>
+          <Article.Info>Frontend Engineer, LibNGo</Article.Info>
+          <Article.Tags>
             <Badge variant="secondary">Svelte</Badge>
             <Badge variant="secondary">SvelteKit</Badge>
             <Badge variant="secondary">PWA</Badge>
-          </DocumentationBlockList>
-        </DocumentationBlockHeader>
-        <DocumentationDescription>
+          </Article.Tags>
+        </Article.SectionHeader>
+        <Article.Description>
           I worked on the frontend of a startup's web platform designed to
           connect physiotherapists. I've built and evolved several different
           things like the hompage, the search page and the user dashboard. I've
           also turned the plateform into a progressive web app with offline
           support and push notifications.
-        </DocumentationDescription>
-      </DocumentationBlock>
-    </Documentation>
+        </Article.Description>
+      </Article.Section>
+    </Article.Root>
   )
 }
