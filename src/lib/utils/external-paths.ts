@@ -1,7 +1,7 @@
 export const externalPaths = {
   works: {
     tudigo: 'https://app.tudigo.com',
-    feeltiy: 'https://www.feelity.fr/',
+    feelity: 'https://www.feelity.fr/',
   },
   socials: {
     linkedIn: 'https://www.linkedin.com/in/baptiste-champbenoit',

@@ -30,7 +30,7 @@ function Home() {
             </a>
             . Previously, I worked on the mobile applications team of a
             <a
-              href={externalPaths.works.feeltiy}
+              href={externalPaths.works.feelity}
               rel="external"
               target="_blank"
               className="ml-1 pretty-link"
