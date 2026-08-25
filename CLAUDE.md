@@ -47,20 +47,25 @@ to `routesConfig` — a route file alone will not appear in the navigation.
   after 200ms. Links that cross the homepage boundary call `setState` themselves.
 - `layout-style.ts` — maps that state to the per-region animation classes
 
-**`src/components/documentation.tsx`** — a family of composable layout primitives
-(`Documentation`, `DocumentationHeader`, `DocumentationBlock`, `DocumentationBlockCard`, …) that
-content pages compose rather than styling headings ad hoc. Use these when building a new page.
+**`src/components/article.tsx`** — the layout primitives content pages compose rather than
+styling headings ad hoc. Exported as a single namespace object: `Article.Root`, `Article.Header`,
+`Article.Title`, `Article.Info`, `Article.Description`, `Article.Section`,
+`Article.SectionHeader`, `Article.SectionTitle`, `Article.Heading`, `Article.Tags`,
+`Article.Card`. Use these when building a new page.
 
 **Theming** — `src/lib/hooks/use-theme.tsx` toggles a `light` / `dark` class on the root element
-and persists to `localStorage`; every color is written as a `dark:` pair in the markup.
+and persists to `localStorage`. Prefer the shadcn semantic tokens defined in `src/styles.css`
+(`bg-card`, `border-border`, …), which already carry both themes; older markup writes colors as
+explicit `dark:` pairs instead.
 
 `src/lib/utils/external-paths.ts` centralizes outbound links.
 
 ## Conventions
 
 - Prettier: no semicolons, double quotes, trailing commas
-- Kebab-case file names; named exports for components (`documentation.tsx` re-exports its family
-  in one block at the bottom)
+- Kebab-case file names; named exports for components. A family of related primitives is
+  assembled into one namespace object at the bottom of its file and exported under a single name
+  (`article.tsx` → `Article.Root`, `Article.Section`, …)
 - Import via the `@/` alias rather than deep relative paths
 - Components take `ComponentProps<"tag">` and merge incoming `className` through `cn`
   (`src/lib/utils/cn.ts`)
@@ -68,8 +73,9 @@ and persists to `localStorage`; every color is written as a `dark:` pair in the 
 
 ## State of the codebase
 
-Built out: `/`, `/experience`, `/projects`, `/projects/investment-platform`.
+Built out: `/`, `/experience`, `/projects`.
 
-Still `Hello "/route"!` stubs: `/engineering`, `/now`, `/contact`.
+Stubs: `/engineering`, `/now`, `/contact` (`Hello "/route"!`) and
+`/projects/investment-platform` (`TODO`) — the case study is being rewritten from scratch.
 
 The right sidebar renders only its "On This Page" heading — there is no table of contents yet.
