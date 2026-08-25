@@ -14,7 +14,8 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EngineeringRouteImport } from './routes/engineering'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as NowRouteImport } from './routes/now'
-import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
+import { Route as ProjectsInvestmentPlatformRouteImport } from './routes/projects/investment-platform'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -41,11 +42,17 @@ const NowRoute = NowRouteImport.update({
   path: '/now',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsRoute = ProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
+const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsInvestmentPlatformRoute =
+  ProjectsInvestmentPlatformRouteImport.update({
+    id: '/projects/investment-platform',
+    path: '/projects/investment-platform',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,7 +60,8 @@ export interface FileRoutesByFullPath {
   '/engineering': typeof EngineeringRoute
   '/experience': typeof ExperienceRoute
   '/now': typeof NowRoute
-  '/projects': typeof ProjectsRoute
+  '/projects/investment-platform': typeof ProjectsInvestmentPlatformRoute
+  '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +69,8 @@ export interface FileRoutesByTo {
   '/engineering': typeof EngineeringRoute
   '/experience': typeof ExperienceRoute
   '/now': typeof NowRoute
-  '/projects': typeof ProjectsRoute
+  '/projects/investment-platform': typeof ProjectsInvestmentPlatformRoute
+  '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,14 +79,28 @@ export interface FileRoutesById {
   '/engineering': typeof EngineeringRoute
   '/experience': typeof ExperienceRoute
   '/now': typeof NowRoute
-  '/projects': typeof ProjectsRoute
+  '/projects/investment-platform': typeof ProjectsInvestmentPlatformRoute
+  '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/contact' | '/engineering' | '/experience' | '/now' | '/projects'
+    | '/'
+    | '/contact'
+    | '/engineering'
+    | '/experience'
+    | '/now'
+    | '/projects/investment-platform'
+    | '/projects/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/engineering' | '/experience' | '/now' | '/projects'
+  to:
+    | '/'
+    | '/contact'
+    | '/engineering'
+    | '/experience'
+    | '/now'
+    | '/projects/investment-platform'
+    | '/projects'
   id:
     | '__root__'
     | '/'
@@ -85,7 +108,8 @@ export interface FileRouteTypes {
     | '/engineering'
     | '/experience'
     | '/now'
-    | '/projects'
+    | '/projects/investment-platform'
+    | '/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,7 +118,8 @@ export interface RootRouteChildren {
   EngineeringRoute: typeof EngineeringRoute
   ExperienceRoute: typeof ExperienceRoute
   NowRoute: typeof NowRoute
-  ProjectsRoute: typeof ProjectsRoute
+  ProjectsInvestmentPlatformRoute: typeof ProjectsInvestmentPlatformRoute
+  ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -134,11 +159,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NowRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects': {
-      id: '/projects'
+    '/projects/': {
+      id: '/projects/'
       path: '/projects'
-      fullPath: '/projects'
-      preLoaderRoute: typeof ProjectsRouteImport
+      fullPath: '/projects/'
+      preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/investment-platform': {
+      id: '/projects/investment-platform'
+      path: '/projects/investment-platform'
+      fullPath: '/projects/investment-platform'
+      preLoaderRoute: typeof ProjectsInvestmentPlatformRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -150,7 +182,8 @@ const rootRouteChildren: RootRouteChildren = {
   EngineeringRoute: EngineeringRoute,
   ExperienceRoute: ExperienceRoute,
   NowRoute: NowRoute,
-  ProjectsRoute: ProjectsRoute,
+  ProjectsInvestmentPlatformRoute: ProjectsInvestmentPlatformRoute,
+  ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
