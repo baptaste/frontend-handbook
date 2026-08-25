@@ -1,13 +1,13 @@
-import { navigationRoutes } from "@/lib/navigation-routes"
+import { routesConfig } from "@/lib/utils/routes"
 import { Link } from "@tanstack/react-router"
-import { useLayout } from "./layout"
+import { useLayout } from "./layout/use-layout"
 
-export function Navigation() {
+export function NavigationLinks() {
   const { setState } = useLayout()
 
   return (
     <div className="space-y-2">
-      {navigationRoutes.map((route) => (
+      {routesConfig.map((route) => (
         <Link
           key={route.path}
           to={route.path}

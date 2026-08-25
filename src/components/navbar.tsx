@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router"
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
-import { Navigation } from "./navigation"
-import { cn } from "@/lib/utils"
-import { useLayout } from "./layout"
+import { NavigationLinks } from "./navigation-links"
+import { cn } from "@/lib/utils/cn"
+import { useLayout } from "./layout/use-layout"
 
 export function Navbar({ className }: { className?: string }) {
   const { setState } = useLayout()
@@ -32,7 +32,7 @@ export function Navbar({ className }: { className?: string }) {
           alignOffset={-24}
           className="z-50 -ml-1 w-screen h-[calc(100dvh-56px)] dark:bg-neutral-950 dark:text-neutral-50 text-neutral-950 bg-neutral-50 rounded-none"
         >
-          <Navigation />
+          <NavigationLinks />
         </PopoverContent>
       </Popover>
     </div>

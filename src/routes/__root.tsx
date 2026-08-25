@@ -4,7 +4,8 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools"
 import { TanStackDevtools } from "@tanstack/react-devtools"
 
 import "../styles.css"
-import { Layout, LayoutProvider } from "@/components/layout"
+import { Layout } from "@/components/layout/layout"
+import { LayoutProvider } from "@/components/layout/use-layout"
 
 export const Route = createRootRoute({
   component: RootComponent,

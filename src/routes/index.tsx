@@ -1,5 +1,5 @@
-import { useLayout } from "@/components/layout"
-import { externalPaths } from "@/lib/external-paths"
+import { useLayout } from "@/components/layout/use-layout"
+import { externalPaths } from "@/lib/utils/external-paths"
 import { createFileRoute, Link } from "@tanstack/react-router"
 
 export const Route = createFileRoute("/")({ component: Home })
