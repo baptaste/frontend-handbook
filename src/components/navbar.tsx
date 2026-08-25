@@ -3,6 +3,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
 import { NavigationLinks } from "./navigation-links"
 import { cn } from "@/lib/utils/cn"
 import { useLayout } from "./layout/use-layout"
+import { ThemeToggler } from "./theme-toggler"
 
 export function Navbar({ className }: { className?: string }) {
   const { setState } = useLayout()
@@ -35,6 +36,8 @@ export function Navbar({ className }: { className?: string }) {
           <NavigationLinks />
         </PopoverContent>
       </Popover>
+
+      <ThemeToggler />
     </div>
   )
 }
