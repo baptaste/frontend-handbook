@@ -3,10 +3,15 @@ import { Navbar } from "../navbar"
 import { Sidebar } from "../sidebar"
 import { NavigationLinks } from "../navigation-links"
 
+import { useLocation, useRouter } from "@tanstack/react-router"
+import { isIndexRoute } from "@/lib/utils/routes"
+import { NavigationBreadcrumb } from "../navigation-breadcrumb"
 import { useLayout } from "./use-layout"
 import { getLayoutClassNames } from "./layout-style"
 
 export function Layout({ children }: { children?: ReactNode }) {
+  const router = useRouter()
+  const { pathname } = useLocation()
   const { state } = useLayout()
   const classNames = getLayoutClassNames(state)
 
@@ -25,6 +30,8 @@ export function Layout({ children }: { children?: ReactNode }) {
         </Sidebar>
 
         <main className="w-full h-full space-y-4 overflow-y-auto p-4 lg:p-8 col-span-1 lg:col-span-3 lg:pb-20">
+          {!isIndexRoute(pathname, router) && <NavigationBreadcrumb />}
+
           {children}
         </main>
 
