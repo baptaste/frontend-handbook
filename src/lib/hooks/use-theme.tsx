@@ -1,26 +1,35 @@
-import { createContext, useContext, useEffect, useState } from "react"
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react"
 
 const STORAGE_KEY = "frontend-handbook-theme"
 
-type Theme = "dark" | "light" | "system"
+const THEMES = ["dark", "light", "system"] as const
+
+type Theme = (typeof THEMES)[number]
+
+function isTheme(value: unknown): value is Theme {
+  return (
+    typeof value === "string" && (THEMES as readonly string[]).includes(value)
+  )
+}
 
 type ThemeProviderProps = {
-  children: React.ReactNode
+  children: ReactNode
   defaultTheme?: Theme
   storageKey?: string
 }
 
-type ThemeProviderState = {
+type ThemeState = {
   theme: Theme
   setTheme: (theme: Theme) => void
 }
 
-const initialState: ThemeProviderState = {
-  theme: "system",
-  setTheme: () => null,
-}
-
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
+const ThemeContext = createContext<ThemeState | null>(null)
 
 export function ThemeProvider({
   children,
@@ -28,9 +37,10 @@ export function ThemeProvider({
   storageKey = STORAGE_KEY,
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
-  )
+  const [theme, setTheme] = useState<Theme>(() => {
+    const stored = localStorage.getItem(storageKey)
+    return isTheme(stored) ? stored : defaultTheme
+  })
 
   useEffect(() => {
     const root = window.document.documentElement
@@ -52,24 +62,25 @@ export function ThemeProvider({
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme)
-      setTheme(theme)
+    setTheme: (next: Theme) => {
+      localStorage.setItem(storageKey, next)
+      setTheme(next)
     },
   }
 
   return (
-    <ThemeProviderContext.Provider {...props} value={value}>
+    <ThemeContext.Provider {...props} value={value}>
       {children}
-    </ThemeProviderContext.Provider>
+    </ThemeContext.Provider>
   )
 }
 
-export const useTheme = () => {
-  const context = useContext(ThemeProviderContext)
+export function useTheme(): ThemeState {
+  const context = useContext(ThemeContext)
 
-  if (context === undefined)
+  if (!context) {
     throw new Error("useTheme must be used within a ThemeProvider")
+  }
 
   return context
 }
