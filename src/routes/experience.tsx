@@ -53,11 +53,9 @@ function RouteComponent() {
             Frontend Engineer, Tudigo
           </DocumentationBlockInfo>
           <DocumentationBlockList>
-            <Badge>React</Badge>
-            <Badge>TypeScript</Badge>
-            <Badge>Vite</Badge>
-            <Badge>TanStack</Badge>
-            <Badge>Algolia</Badge>
+            <Badge variant="secondary">Fintech</Badge>
+            <Badge variant="secondary">React</Badge>
+            <Badge variant="secondary">Monorepo</Badge>
           </DocumentationBlockList>
         </DocumentationBlockHeader>
 
@@ -97,9 +95,9 @@ function RouteComponent() {
             Frontend Engineer, Feelity
           </DocumentationBlockInfo>
           <DocumentationBlockList>
-            <Badge>React Native</Badge>
-            <Badge>Angular</Badge>
-            <Badge>Mobile Apps</Badge>
+            <Badge variant="secondary">React Native</Badge>
+            <Badge variant="secondary">Angular</Badge>
+            <Badge variant="secondary">Mobile Apps</Badge>
           </DocumentationBlockList>
         </DocumentationBlockHeader>
 
@@ -120,9 +118,9 @@ function RouteComponent() {
             Frontend Engineer, LibNGo
           </DocumentationBlockInfo>
           <DocumentationBlockList>
-            <Badge>Svelte</Badge>
-            <Badge>SvelteKit</Badge>
-            <Badge>PWA</Badge>
+            <Badge variant="secondary">Svelte</Badge>
+            <Badge variant="secondary">SvelteKit</Badge>
+            <Badge variant="secondary">PWA</Badge>
           </DocumentationBlockList>
         </DocumentationBlockHeader>
         <DocumentationDescription>

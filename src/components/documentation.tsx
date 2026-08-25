@@ -36,11 +36,7 @@ function DocumentationInfo({
   children,
   ...props
 }: ComponentProps<"p">) {
-  return (
-    <p className={cn("", className)} {...props}>
-      {children}
-    </p>
-  )
+  return <p {...props}>{children}</p>
 }
 
 function DocumentationHeader({
@@ -55,8 +51,16 @@ function DocumentationHeader({
   )
 }
 
-function DocumentationBlock({ children }: { children: ReactNode }) {
-  return <section className="space-y-6">{children}</section>
+function DocumentationBlock({
+  children,
+  className,
+  ...props
+}: ComponentProps<"section">) {
+  return (
+    <section className={cn("space-y-6", className)} {...props}>
+      {children}
+    </section>
+  )
 }
 
 function DocumentationBlockHeader({ children }: { children: ReactNode }) {
@@ -91,8 +95,8 @@ function DocumentationBlockHeading({ children }: { children: ReactNode }) {
 
 function DocumentationBlockCard({ children }: { children: ReactNode }) {
   return (
-    <div className="bg-neutral-100 dark:bg-neutral-900 rounded-lg p-4 lg:p-6">
-      <div className="space-y-2">{children}</div>
+    <div className="space-y-4 bg-neutral-100 dark:bg-neutral-900 rounded-lg p-4 lg:p-6 border border-neutral-800">
+      {children}
     </div>
   )
 }
