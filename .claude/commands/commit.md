@@ -36,7 +36,7 @@ $ARGUMENTS
 4. Commit each group with a conventional-commit message matching the style in the log above:
    a lowercase `type: imperative summary` subject under ~72 characters.
    Types in use: `feat`, `fix`, `refactor`, `chore`, `docs`, `style`, `test`.
-   Add a short body only when the *why* is not obvious from the subject.
+   Add a short body only when the _why_ is not obvious from the subject.
 
 5. **Do not add a `Co-Authored-By` trailer, and do not mention Claude, Claude Code, or any AI
    assistance anywhere in the message.** These commits are authored by the repository owner.

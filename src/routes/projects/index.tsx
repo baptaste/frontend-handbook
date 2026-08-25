@@ -1,3 +1,5 @@
+import { Link, createFileRoute } from "@tanstack/react-router"
+import { ArrowRightIcon } from "lucide-react"
 import {
   Documentation,
   DocumentationBlock,
@@ -12,8 +14,6 @@ import {
 } from "@/components/documentation"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { createFileRoute, Link } from "@tanstack/react-router"
-import { ArrowRightIcon } from "lucide-react"
 
 export const Route = createFileRoute("/projects/")({
   component: RouteComponent,

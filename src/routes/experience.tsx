@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router"
+import type { ReactNode } from "react"
 import { Badge } from "@/components/ui/badge"
 import {
   Documentation,
@@ -14,7 +15,6 @@ import {
   DocumentationInfo,
   DocumentationTitle,
 } from "@/components/documentation"
-import type { ReactNode } from "react"
 
 export const Route = createFileRoute("/experience")({
   component: RouteComponent,

@@ -1,13 +1,13 @@
 import {
+  type ReactNode,
   createContext,
   useCallback,
   useContext,
   useEffect,
   useState,
-  type ReactNode,
 } from "react"
-import type { LayoutState } from "./layout-style"
 import { useLocation, useRouter } from "@tanstack/react-router"
+import type { LayoutState } from "./layout-style"
 import { isIndexRoute, routesConfig } from "@/lib/utils/routes"
 
 const LayoutContext = createContext<{

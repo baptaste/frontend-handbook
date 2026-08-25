@@ -1,6 +1,6 @@
-import { routesConfig } from "@/lib/utils/routes"
 import { Link } from "@tanstack/react-router"
 import { useLayout } from "./layout/use-layout"
+import { routesConfig } from "@/lib/utils/routes"
 
 export function NavigationLinks() {
   const { setState } = useLayout()

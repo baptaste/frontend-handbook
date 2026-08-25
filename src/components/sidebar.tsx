@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils/cn"
 import type { PropsWithChildren } from "react"
+import { cn } from "@/lib/utils/cn"
 
 export function Sidebar({
   children,

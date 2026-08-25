@@ -1,4 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router"
+import { Fragment } from "react/jsx-runtime"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,9 +8,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "./ui/breadcrumb"
-import { getCurrentRoute, getParentRoutes } from "@/lib/utils/routes"
-import { Fragment } from "react/jsx-runtime"
 import { useLayout } from "./layout/use-layout"
+import { getCurrentRoute, getParentRoutes } from "@/lib/utils/routes"
 
 export function NavigationBreadcrumb() {
   const { pathname } = useLocation()

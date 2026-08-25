@@ -1,3 +1,4 @@
+import { createFileRoute } from "@tanstack/react-router"
 import {
   Documentation,
   DocumentationBlock,
@@ -10,7 +11,6 @@ import {
   DocumentationTitle,
 } from "@/components/documentation"
 import { Badge } from "@/components/ui/badge"
-import { createFileRoute } from "@tanstack/react-router"
 
 export const Route = createFileRoute("/projects/investment-platform")({
   component: RouteComponent,

@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils/cn"
 import type { ComponentProps, ReactNode } from "react"
+import { cn } from "@/lib/utils/cn"
 
 function Documentation({
   className,

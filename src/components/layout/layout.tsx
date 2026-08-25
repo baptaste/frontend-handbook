@@ -1,13 +1,13 @@
 import { type ReactNode } from "react"
+import { useLocation, useRouter } from "@tanstack/react-router"
 import { Navbar } from "../navbar"
 import { Sidebar } from "../sidebar"
 import { NavigationLinks } from "../navigation-links"
 
-import { useLocation, useRouter } from "@tanstack/react-router"
-import { isIndexRoute } from "@/lib/utils/routes"
 import { NavigationBreadcrumb } from "../navigation-breadcrumb"
 import { useLayout } from "./use-layout"
 import { getLayoutClassNames } from "./layout-style"
+import { isIndexRoute } from "@/lib/utils/routes"
 
 export function Layout({ children }: { children?: ReactNode }) {
   const router = useRouter()

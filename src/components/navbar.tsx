@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router"
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
 import { NavigationLinks } from "./navigation-links"
-import { cn } from "@/lib/utils/cn"
 import { useLayout } from "./layout/use-layout"
 import { ThemeToggler } from "./theme-toggler"
+import { cn } from "@/lib/utils/cn"
 
 export function Navbar({ className }: { className?: string }) {
   const { setState } = useLayout()

@@ -1,5 +1,5 @@
+import type { useRouter } from "@tanstack/react-router"
 import type { FileRoutesByTo } from "@/routeTree.gen"
-import { useRouter } from "@tanstack/react-router"
 
 type RoutePath = keyof FileRoutesByTo
 
