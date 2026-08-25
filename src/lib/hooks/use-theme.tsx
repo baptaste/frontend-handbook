@@ -1,9 +1,9 @@
 import {
+  type ReactNode,
   createContext,
   useContext,
   useEffect,
   useState,
-  type ReactNode,
 } from "react"
 
 const STORAGE_KEY = "frontend-handbook-theme"
