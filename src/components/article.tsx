@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils/cn"
 function Root({ className, children, ...props }: ComponentProps<"article">) {
   return (
     <article
-      className={cn("min-h-dvh w-full space-y-10", className)}
+      className={cn("min-h-dvh w-full space-y-12", className)}
       {...props}
     >
       {children}
@@ -82,7 +82,10 @@ function Heading({ className, children, ...props }: ComponentProps<"p">) {
 
 function Tags({ className, children, ...props }: ComponentProps<"div">) {
   return (
-    <div className={cn("flex items-center gap-2", className)} {...props}>
+    <div
+      className={cn("flex items-center flex-wrap gap-2", className)}
+      {...props}
+    >
       {children}
     </div>
   )
