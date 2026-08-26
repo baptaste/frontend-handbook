@@ -1,26 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router"
-import type { ReactNode } from "react"
+import { Link, createFileRoute } from "@tanstack/react-router"
 import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
 
 export const Route = createFileRoute("/experience")({
   component: RouteComponent,
 })
-
-function ExperienceAchievement({
-  label,
-  children,
-}: {
-  label: string
-  children: ReactNode
-}) {
-  return (
-    <div key={label} className="space-y-1">
-      <p className="text-neutral-900 dark:text-neutral-50">{label}</p>
-      <p>{children}</p>
-    </div>
-  )
-}
 
 function RouteComponent() {
   return (
@@ -35,8 +19,11 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>2023 — today</Article.SectionTitle>
-          <Article.Info>Frontend Engineer, Tudigo</Article.Info>
+          <Article.SectionTitle>
+            Tudigo — Frontend Engineer
+          </Article.SectionTitle>
+          <Article.Info>March 2023 – Present</Article.Info>
+          <Article.Info>Bordeaux, France · Hybrid / full remote</Article.Info>
           <Article.Tags>
             <Badge variant="secondary">Fintech</Badge>
             <Badge variant="secondary">React</Badge>
@@ -45,42 +32,30 @@ function RouteComponent() {
         </Article.SectionHeader>
 
         <Article.Description>
-          I worked on the frontend of a complex investment platform, with a
-          strong focus on usability, performance and maintainability.
+          Regulated{" "}
+          <Link to="/projects/investment-platform" className="pretty-link">
+            investment platform
+          </Link>{" "}
+          (240M€+ invested, 250K+ users). Worked across the full product — a
+          215K-line, three-app monorepo — from feature work to platform-wide
+          reliability and toolchain improvements. Onboarded new hires into the
+          codebase and mentored junior engineers as the team consolidated to a
+          small senior core.
         </Article.Description>
-
-        <Article.Heading>What I worked on</Article.Heading>
-        <Article.Card>
-          <ExperienceAchievement label="Product">
-            Built and evolved user-facing features used across the investment
-            platform.
-          </ExperienceAchievement>
-          <ExperienceAchievement label="Architecture">
-            Designed reusable frontend patterns for complex and highly
-            interactive interfaces.
-          </ExperienceAchievement>
-          <ExperienceAchievement label="Data">
-            Worked extensively with asynchronous data, caching, filtering and
-            search.
-          </ExperienceAchievement>
-          <ExperienceAchievement label="UX">
-            Translated product requirements and designs into polished responsive
-            interfaces.
-          </ExperienceAchievement>
-          <ExperienceAchievement label="Mentoring">
-            Onboarded new developers and helped juniors.
-          </ExperienceAchievement>
-        </Article.Card>
       </Article.Section>
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>2022</Article.SectionTitle>
-          <Article.Info>Frontend Engineer, Feelity</Article.Info>
+          <Article.SectionTitle>
+            Feelity – Frontend Engineer
+          </Article.SectionTitle>
+          <Article.Info>
+            September 2022 – March 2023 · Bègles, France · On-site
+          </Article.Info>
           <Article.Tags>
+            <Badge variant="secondary">Digital Agency</Badge>
             <Badge variant="secondary">React Native</Badge>
-            <Badge variant="secondary">Angular</Badge>
-            <Badge variant="secondary">Mobile Apps</Badge>
+            <Badge variant="secondary">IoT</Badge>
           </Article.Tags>
         </Article.SectionHeader>
 
@@ -96,20 +71,25 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>2021</Article.SectionTitle>
-          <Article.Info>Frontend Engineer, LibNGo</Article.Info>
+          <Article.SectionTitle>
+            LibNGo – Frontend Engineer
+          </Article.SectionTitle>
+          <Article.Info>
+            March 2021 – August 2022 · Talence, France · Hybrid
+          </Article.Info>
           <Article.Tags>
+            <Badge variant="secondary">Startup</Badge>
             <Badge variant="secondary">Svelte</Badge>
-            <Badge variant="secondary">SvelteKit</Badge>
             <Badge variant="secondary">PWA</Badge>
           </Article.Tags>
         </Article.SectionHeader>
         <Article.Description>
-          I worked on the frontend of a startup's web platform designed to
-          connect physiotherapists. I've built and evolved several different
-          things like the hompage, the search page and the user dashboard. I've
-          also turned the plateform into a progressive web app with offline
-          support and push notifications.
+          Work-study program during which I worked on the frontend of a
+          startup's web platform designed to connect physiotherapists. I've
+          built and evolved several different things like the hompage, the
+          search page and the user dashboard. I've also turned the plateform
+          into a progressive web app with offline support and push
+          notifications.
         </Article.Description>
       </Article.Section>
     </Article.Root>
