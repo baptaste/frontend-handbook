@@ -22,28 +22,26 @@ function RouteComponent() {
         <Article.Card>
           <Article.SectionHeader>
             <Article.SectionTitle>
-              Tudigo — Investment platform
+              Tudigo — Investment platform · Fintech
             </Article.SectionTitle>
-            <Article.Info>
-              A complex web application for managing and discovering
-              investments.
-            </Article.Info>
-            <Article.Info>Role: Frontend Engineer</Article.Info>
             <Article.Tags>
-              <Badge variant="outline">Fintech</Badge>
-              <Badge variant="outline">React</Badge>
-              <Badge variant="outline">TypeScript</Badge>
-              <Badge variant="outline">Vite</Badge>
-              <Badge variant="outline">Monorepo</Badge>
-              <Badge variant="outline">TanStack</Badge>
-              <Badge variant="outline">Algolia</Badge>
+              <Badge variant="secondary">Fintech</Badge>
+              <Badge variant="secondary">React</Badge>
+              <Badge variant="secondary">Monorepo</Badge>
             </Article.Tags>
+            <Article.Info className="mt-4">
+              A 215K-line, three-app platform that has channeled 240M€+ into
+              250+ companies — where a "small bug" can be a compliance problem.
+              Three years of chasing trust-critical bugs, modernizing the
+              toolchain, and holding a large codebase together as the team
+              shrank around it.
+            </Article.Info>
           </Article.SectionHeader>
 
           <Link to="/projects/investment-platform">
             <Button>
+              Read the case study
               <ArrowRightIcon />
-              Read case study
             </Button>
           </Link>
         </Article.Card>
