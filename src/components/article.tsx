@@ -94,6 +94,20 @@ function Tags({ className, children, ...props }: ComponentProps<"div">) {
   )
 }
 
+function Code({ className, children, ...props }: ComponentProps<"pre">) {
+  return (
+    <pre
+      className={cn(
+        "overflow-x-auto rounded-lg border border-border bg-muted p-4 lg:p-6 font-mono text-sm leading-6",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </pre>
+  )
+}
+
 function Card({ className, children, ...props }: ComponentProps<"div">) {
   return (
     <div
@@ -119,6 +133,7 @@ const Article = {
   SectionTitle,
   Heading,
   Tags,
+  Code,
   Card,
 }
 
