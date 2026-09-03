@@ -36,16 +36,21 @@ export const routesConfig = [
   {
     path: "/engineering",
     label: "Engineering",
+    routes: [
+      {
+        path: "/engineering/architecture",
+        label: "Architecture",
+      },
+    ],
+  },
+  {
+    path: "/now",
+    label: "Now",
     routes: [],
   },
   {
     path: "/contact",
     label: "Contact",
-    routes: [],
-  },
-  {
-    path: "/now",
-    label: "Now",
     routes: [],
   },
 ] satisfies RouteDef[]
