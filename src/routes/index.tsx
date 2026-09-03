@@ -74,7 +74,7 @@ function Home() {
           <Link
             to="/experience"
             onClick={() => setState("in")}
-            className="hover:shimmer shimmer-duration-2000 ml-auto text-neutral-950 dark:text-neutral-50 hover:text-muted-foreground group"
+            className="hover:shimmer shimmer-duration-2000 ml-auto hover:text-muted-foreground"
           >
             [ Explore the handbook → ]
           </Link>

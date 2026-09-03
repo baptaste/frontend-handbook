@@ -29,13 +29,13 @@ function RouteComponent() {
               <Badge variant="secondary">React</Badge>
               <Badge variant="secondary">Monorepo</Badge>
             </Article.Tags>
-            <Article.Info className="mt-4">
+            <Article.Description className="mt-4">
               A 215K-line, three-app platform that has channeled 240M€+ into
               250+ companies — where a "small bug" can be a compliance problem.
               Three years of chasing trust-critical bugs, modernizing the
               toolchain, and holding a large codebase together as the team
               shrank around it.
-            </Article.Info>
+            </Article.Description>
           </Article.SectionHeader>
 
           <Link to="/projects/investment-platform">

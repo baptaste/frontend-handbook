@@ -30,7 +30,7 @@ function Title({ className, children, ...props }: ComponentProps<"h1">) {
 
 function Info({ className, children, ...props }: ComponentProps<"p">) {
   return (
-    <p className={className} {...props}>
+    <p className={cn("text-muted-foreground", className)} {...props}>
       {children}
     </p>
   )
@@ -38,7 +38,10 @@ function Info({ className, children, ...props }: ComponentProps<"p">) {
 
 function Description({ className, children, ...props }: ComponentProps<"p">) {
   return (
-    <p className={cn("max-w-lg text-pretty", className)} {...props}>
+    <p
+      className={cn("text-pretty leading-7 tracking-wide", className)}
+      {...props}
+    >
       {children}
     </p>
   )
@@ -74,7 +77,7 @@ function SectionTitle({ className, children, ...props }: ComponentProps<"h4">) {
 
 function Heading({ className, children, ...props }: ComponentProps<"p">) {
   return (
-    <p className={cn("mb-4 text-lg", className)} {...props}>
+    <p className={cn("text-lg font-medium", className)} {...props}>
       {children}
     </p>
   )
@@ -83,7 +86,7 @@ function Heading({ className, children, ...props }: ComponentProps<"p">) {
 function Tags({ className, children, ...props }: ComponentProps<"div">) {
   return (
     <div
-      className={cn("flex items-center flex-wrap gap-2", className)}
+      className={cn("flex items-center flex-wrap gap-2 py-1", className)}
       {...props}
     >
       {children}
