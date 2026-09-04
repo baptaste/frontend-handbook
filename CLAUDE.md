@@ -51,7 +51,7 @@ to `routesConfig` — a route file alone will not appear in the navigation.
 styling headings ad hoc. Exported as a single namespace object: `Article.Root`, `Article.Header`,
 `Article.Title`, `Article.Info`, `Article.Description`, `Article.Section`,
 `Article.SectionHeader`, `Article.SectionTitle`, `Article.Heading`, `Article.Tags`,
-`Article.Card`. Use these when building a new page.
+`Article.Code`, `Article.Card`. Use these when building a new page.
 
 **Theming** — `src/lib/hooks/use-theme.tsx` toggles a `light` / `dark` class on the root element
 and persists to `localStorage`. Prefer the shadcn semantic tokens defined in `src/styles.css`
@@ -73,9 +73,18 @@ explicit `dark:` pairs instead.
 
 ## State of the codebase
 
-Built out: `/`, `/experience`, `/projects`.
+Built out: `/`, `/experience`, `/projects`, `/projects/investment-platform`, `/engineering`,
+`/engineering/architecture`, `/engineering/state-management`.
 
-Stubs: `/engineering`, `/now`, `/contact` (`Hello "/route"!`) and
-`/projects/investment-platform` (`TODO`) — the case study is being rewritten from scratch.
+Stubs: `/now`, `/contact` (`Hello "/route"!`).
+
+`/engineering` lists six notes. Two are written and linked; the other four — Separation of
+concerns, Code style, User experience, Developer experience — render through `PlannedNote`
+with a "Soon" badge and have no route yet, so the cards are deliberately not links. Write the
+note, add the route, then swap `PlannedNote` for `Note`.
+
+The engineering notes are written from the author's own material and voice. Do not invent
+experiences, opinions, dates or technical details for them — ask instead, and mark unknowns
+`[TODO: ...]` in the copy.
 
 The right sidebar renders only its "On This Page" heading — there is no table of contents yet.
