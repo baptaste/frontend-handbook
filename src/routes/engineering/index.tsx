@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router"
 import { ArrowRightIcon } from "lucide-react"
+import type { LinkProps } from "@tanstack/react-router"
 import type { ReactNode } from "react"
 import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
@@ -26,6 +27,21 @@ function NoteBody({
       </div>
       <Article.Description>{description}</Article.Description>
     </div>
+  )
+}
+
+function Note({ to, ...props }: NoteProps & { to: LinkProps["to"] }) {
+  return (
+    <Article.Card className="group">
+      <Link to={to}>
+        <NoteBody
+          {...props}
+          trailing={
+            <ArrowRightIcon className="opacity-0 group-hover:opacity-100 transition-opacity size-5 min-w-5" />
+          }
+        />
+      </Link>
+    </Article.Card>
   )
 }
 
@@ -69,21 +85,16 @@ function RouteComponent() {
       </Article.Header>
 
       <Article.Section>
-        <Article.Card className="group">
-          <Link to="/engineering/architecture">
-            <NoteBody
-              title="Architecture"
-              description="Where code should live, and what's allowed to depend on what."
-              trailing={
-                <ArrowRightIcon className="opacity-0 group-hover:opacity-100 transition-opacity size-5 min-w-5" />
-              }
-            />
-          </Link>
-        </Article.Card>
+        <Note
+          to="/engineering/architecture"
+          title="Architecture"
+          description="Where code should live, and what's allowed to depend on what."
+        />
 
-        <PlannedNote
+        <Note
+          to="/engineering/state-management"
           title="State management"
-          description="Where state actually lives, why most of it was never yours to own, and what every extra copy costs you."
+          description="Whether a piece of state needs to exist at all, and where it goes when it does."
         />
 
         <PlannedNote

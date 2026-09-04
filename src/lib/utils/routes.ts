@@ -41,6 +41,10 @@ export const routesConfig = [
         path: "/engineering/architecture",
         label: "Architecture",
       },
+      {
+        path: "/engineering/state-management",
+        label: "State management",
+      },
     ],
   },
   {
