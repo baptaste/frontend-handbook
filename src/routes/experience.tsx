@@ -2,8 +2,16 @@ import { Link, createFileRoute } from "@tanstack/react-router"
 import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
 
+const anchors = {
+  tudigo: { id: "tudigo", label: "Tudigo — Frontend Engineer" },
+  feelity: { id: "feelity", label: "Feelity — Frontend Engineer" },
+  libngo: { id: "libngo", label: "LibNGo — Frontend Engineer" },
+  learningToCode: { id: "learning-to-code", label: "Learning to code" },
+} as const
+
 export const Route = createFileRoute("/experience")({
   component: RouteComponent,
+  // staticData: { anchors: Object.values(anchors) },
 })
 
 function RouteComponent() {
@@ -19,8 +27,8 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>
-            Tudigo — Frontend Engineer
+          <Article.SectionTitle id={anchors.tudigo.id}>
+            {anchors.tudigo.label}
           </Article.SectionTitle>
           <Article.Info>March 2023 – Present</Article.Info>
           <Article.Info>Bordeaux, France · Hybrid / Full remote</Article.Info>
@@ -50,8 +58,8 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>
-            Feelity – Frontend Engineer
+          <Article.SectionTitle id={anchors.feelity.id}>
+            {anchors.feelity.label}
           </Article.SectionTitle>
           <Article.Info>September 2022 – March 2023</Article.Info>
           <Article.Info>Bègles, France · On-site</Article.Info>
@@ -74,8 +82,8 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>
-            LibNGo – Frontend Engineer
+          <Article.SectionTitle id={anchors.libngo.id}>
+            {anchors.libngo.label}
           </Article.SectionTitle>
           <Article.Info>December 2021 – August 2022</Article.Info>
           <Article.Info>Talence, France · Hybrid</Article.Info>
@@ -97,7 +105,9 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>Learning to code</Article.SectionTitle>
+          <Article.SectionTitle id={anchors.learningToCode.id}>
+            {anchors.learningToCode.label}
+          </Article.SectionTitle>
           <Article.Info>December 2019 – September 2021</Article.Info>
           <Article.Info>Bordeaux, France · Remote</Article.Info>
           <Article.Tags>
