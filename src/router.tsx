@@ -17,3 +17,9 @@ declare module "@tanstack/react-router" {
     router: ReturnType<typeof getRouter>
   }
 }
+
+declare module "@tanstack/react-router" {
+  interface StaticDataRouteOption {
+    anchors?: readonly { id: string; label: string }[]
+  }
+}

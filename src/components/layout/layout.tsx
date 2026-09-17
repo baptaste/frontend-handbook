@@ -1,27 +1,29 @@
-import { type ReactNode } from "react"
 import { useLocation, useRouter } from "@tanstack/react-router"
+import { type ReactNode, useRef } from "react"
 import { Navbar } from "../navbar"
 import { Sidebar } from "../sidebar"
 import { NavigationLinks } from "../navigation-links"
 
 import { NavigationBreadcrumb } from "../navigation-breadcrumb"
+import { NavigationAnchors, useRouteAnchors } from "../navigation-anchors"
 import { useLayout } from "./use-layout"
 import { getLayoutClassNames } from "./layout-style"
 import { isIndexRoute } from "@/lib/utils/routes"
+import { cn } from "@/lib/utils/cn"
 
 export function Layout({ children }: { children?: ReactNode }) {
+  const ref = useRef<HTMLDivElement | null>(null)
   const router = useRouter()
   const { pathname } = useLocation()
+
   const { state } = useLayout()
+  const anchors = useRouteAnchors()
   const classNames = getLayoutClassNames(state)
 
+  const withAnchors = anchors.length > 0
+
   return (
-    <div
-      data-layout=""
-      className="bg-background"
-      // className="bg-background text-foreground dark:bg-foreground dark:text-background *:bg-background *:text-foreground *:dark:bg-foreground *:dark:text-background"
-      // className="overflow-x-hidden antialiased bg-neutral-50 dark:bg-neutral-950 *:bg-neutral-50 *:dark:bg-neutral-950 text-neutral-500 dark:text-neutral-300 *:text-neutral-500 *:dark:text-neutral-300 *:selection:bg-neutral-200 *:dark:selection:bg-neutral-700"
-    >
+    <div className="bg-background">
       <Navbar className={classNames.navbar} />
 
       <div className="grid grid-cols-1 lg:grid-cols-5 w-full h-dvh">
@@ -29,16 +31,29 @@ export function Layout({ children }: { children?: ReactNode }) {
           <NavigationLinks />
         </Sidebar>
 
-        <main className="w-full h-full space-y-4 overflow-y-auto p-4 lg:p-8 col-span-1 lg:col-span-3 lg:pb-20">
+        <main
+          ref={ref}
+          className={cn(
+            "w-full h-full space-y-4 overflow-y-auto p-4 lg:p-8 col-span-1 lg:col-span-4 lg:pb-20",
+            (withAnchors || isIndexRoute(pathname, router)) && "lg:col-span-3",
+            // The last heading has to be able to scroll up to the anchor line,
+            // so leave (1 - ACTIVE_LINE) of the viewport below it.
+            withAnchors && "lg:pb-[80dvh]",
+          )}
+        >
           {!isIndexRoute(pathname, router) && <NavigationBreadcrumb />}
 
           {children}
         </main>
 
-        <Sidebar side="right" className={classNames.rightSidebar}>
-          <p className="text-sm font-medium text-neutral-950 dark:text-neutral-50">
-            On This Page
-          </p>
+        <Sidebar
+          side="right"
+          className={cn(
+            "lg:hidden",
+            withAnchors && `lg:block ${classNames.rightSidebar}`,
+          )}
+        >
+          <NavigationAnchors ref={ref} />
         </Sidebar>
       </div>
     </div>

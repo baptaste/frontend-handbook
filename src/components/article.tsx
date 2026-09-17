@@ -67,11 +67,20 @@ function SectionHeader({
   )
 }
 
-function SectionTitle({ className, children, ...props }: ComponentProps<"h4">) {
+function SectionTitle({
+  id,
+  className,
+  children,
+  ...props
+}: ComponentProps<"h2">) {
   return (
-    <h4 className={cn("text-xl font-bold", className)} {...props}>
+    <h2
+      id={id}
+      className={cn("text-xl font-bold scroll-mt-20", className)}
+      {...props}
+    >
       {children}
-    </h4>
+    </h2>
   )
 }
 
