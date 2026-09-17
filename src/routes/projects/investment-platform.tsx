@@ -3,8 +3,23 @@ import type { ReactNode } from "react"
 import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
 
+const anchors = {
+  whatTudigoIs: { id: "what-tudigo-is", label: "What Tudigo is" },
+  theCodebase: { id: "the-codebase", label: "The codebase I worked in" },
+  rebuildingTheFoundation: {
+    id: "rebuilding-the-foundation",
+    label: "Rebuilding the foundation",
+  },
+  workImHappyWith: {
+    id: "work-im-happy-with",
+    label: "Three pieces of work I'm happy with",
+  },
+  lookingBack: { id: "looking-back", label: "Looking back" },
+} as const
+
 export const Route = createFileRoute("/projects/investment-platform")({
   component: RouteComponent,
+  staticData: { anchors: Object.values(anchors) },
 })
 
 function Fact({ label, children }: { label: string; children: ReactNode }) {
@@ -56,7 +71,9 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>What Tudigo is</Article.SectionTitle>
+          <Article.SectionTitle id={anchors.whatTudigoIs.id}>
+            {anchors.whatTudigoIs.label}
+          </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
           Tudigo is a French investment platform that opens up a corner of
@@ -77,7 +94,9 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>The codebase I worked in</Article.SectionTitle>
+          <Article.SectionTitle id={anchors.theCodebase.id}>
+            {anchors.theCodebase.label}
+          </Article.SectionTitle>
           <Article.Description>
             Tudigo isn't one app. It's three products sharing a single
             foundation, all living in one 215K+ line monorepo — a monorepo that
@@ -117,7 +136,9 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>Rebuilding the foundation</Article.SectionTitle>
+          <Article.SectionTitle id={anchors.rebuildingTheFoundation.id}>
+            {anchors.rebuildingTheFoundation.label}
+          </Article.SectionTitle>
           <Article.Description>
             Everything described above — the three apps, the shared library
             system, the boundaries between them — is a structure I helped design
@@ -196,8 +217,8 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>
-            Three pieces of work I'm happy with
+          <Article.SectionTitle id={anchors.workImHappyWith.id}>
+            {anchors.workImHappyWith.label}
           </Article.SectionTitle>
         </Article.SectionHeader>
 
@@ -267,7 +288,9 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>Looking back</Article.SectionTitle>
+          <Article.SectionTitle id={anchors.lookingBack.id}>
+            {anchors.lookingBack.label}
+          </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
           I spent 3.5 years on Tudigo, and the role didn't stay still. I joined

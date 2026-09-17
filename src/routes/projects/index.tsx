@@ -21,7 +21,7 @@ function RouteComponent() {
       <Article.Section>
         <Article.Card>
           <Article.SectionHeader>
-            <Article.SectionTitle>
+            <Article.SectionTitle id="investment-platform">
               Tudigo — Investment platform · Fintech
             </Article.SectionTitle>
             <Article.Tags>

@@ -2,8 +2,17 @@ import { Link, createFileRoute } from "@tanstack/react-router"
 import type { ReactNode } from "react"
 import { Article } from "@/components/article"
 
+const anchors = {
+  doesItExist: { id: "does-it-exist", label: "First, does it need to exist?" },
+  serverState: { id: "server-state", label: "Server state isn't client state" },
+  whereItLives: { id: "where-it-lives", label: "Where the rest of it lives" },
+  contextCeiling: { id: "context-ceiling", label: "Context has a ceiling" },
+  howIGotHere: { id: "how-i-got-here", label: "How I got here" },
+} as const
+
 export const Route = createFileRoute("/engineering/state-management")({
   component: RouteComponent,
+  staticData: { anchors: Object.values(anchors) },
 })
 
 function Choice({ label, children }: { label: string; children: ReactNode }) {
@@ -28,8 +37,8 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>
-            First, does it need to exist?
+          <Article.SectionTitle id={anchors.doesItExist.id}>
+            {anchors.doesItExist.label}
           </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
@@ -70,8 +79,8 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>
-            Server state isn't client state
+          <Article.SectionTitle id={anchors.serverState.id}>
+            {anchors.serverState.label}
           </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
@@ -122,8 +131,8 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>
-            Where the rest of it lives
+          <Article.SectionTitle id={anchors.whereItLives.id}>
+            {anchors.whereItLives.label}
           </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
@@ -167,7 +176,9 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>Context has a ceiling</Article.SectionTitle>
+          <Article.SectionTitle id={anchors.contextCeiling.id}>
+            {anchors.contextCeiling.label}
+          </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
           The line between the last two is the one I've learned the most about,
@@ -209,7 +220,9 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>How I got here</Article.SectionTitle>
+          <Article.SectionTitle id={anchors.howIGotHere.id}>
+            {anchors.howIGotHere.label}
+          </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
           I used <code>useState</code> for almost everything when I started with

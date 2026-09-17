@@ -1,11 +1,29 @@
 import { Link, createFileRoute } from "@tanstack/react-router"
 import { Article } from "@/components/article"
 
+const anchors = {
+  whoUsesIt: {
+    id: "who-uses-it",
+    label: "I start with who is going to use it",
+  },
+  organizeByProduct: {
+    id: "organize-by-product",
+    label: "Organize around what the product does",
+  },
+  oneShape: { id: "one-shape", label: "One shape, every time" },
+  dependencyDirection: {
+    id: "dependency-direction",
+    label: "Dependencies only point one way",
+  },
+} as const
+
 export const Route = createFileRoute("/engineering/architecture")({
   component: RouteComponent,
+  staticData: { anchors: Object.values(anchors) },
 })
 
-const structure = `apps/
+const structure = `
+apps/
 ├── webapp/
 ├── back-office/
 └── embed/
@@ -40,8 +58,8 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>
-            I start with who is going to use it
+          <Article.SectionTitle id={anchors.whoUsesIt.id}>
+            {anchors.whoUsesIt.label}
           </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
@@ -83,8 +101,8 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>
-            Organize around what the product does
+          <Article.SectionTitle id={anchors.organizeByProduct.id}>
+            {anchors.organizeByProduct.label}
           </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
@@ -116,7 +134,9 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>One shape, every time</Article.SectionTitle>
+          <Article.SectionTitle id={anchors.oneShape.id}>
+            {anchors.oneShape.label}
+          </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
           Every feature lib has the same signature: a single barrel export, and
@@ -159,8 +179,8 @@ function RouteComponent() {
 
       <Article.Section>
         <Article.SectionHeader>
-          <Article.SectionTitle>
-            Dependencies only point one way
+          <Article.SectionTitle id={anchors.dependencyDirection.id}>
+            {anchors.dependencyDirection.label}
           </Article.SectionTitle>
         </Article.SectionHeader>
         <Article.Description>
