@@ -3,25 +3,20 @@ import type { FileRoutesByTo } from "@/routeTree.gen"
 
 type RoutePath = keyof FileRoutesByTo
 
-type BaseRouteDef = {
+type RouteDef = {
   path: RoutePath
   label: string
-}
-
-interface RouteDef extends BaseRouteDef {
-  routes: BaseRouteDef[]
+  routes?: RouteDef[]
 }
 
 export const routesConfig = [
   {
     path: "/",
     label: "Introduction",
-    routes: [],
   },
   {
     path: "/experience",
     label: "Experience",
-    routes: [],
   },
   {
     path: "/projects",
@@ -50,22 +45,20 @@ export const routesConfig = [
   {
     path: "/now",
     label: "Now",
-    routes: [],
   },
   {
     path: "/contact",
     label: "Contact",
-    routes: [],
   },
 ] satisfies RouteDef[]
 
-export function getFlatRoutes(): BaseRouteDef[] {
-  return routesConfig.flatMap((r) =>
-    [{ path: r.path, label: r.label }, ...r.routes].flat(),
+export function getFlatRoutes(): RouteDef[] {
+  return routesConfig.flatMap(({ routes, ...route }) =>
+    [...(routes ?? []), { ...route }].flat(),
   )
 }
 
-export function getCurrentRoute(pathname: string): BaseRouteDef | undefined {
+export function getCurrentRoute(pathname: string): RouteDef | undefined {
   return getFlatRoutes().find((r) => pathname === r.path)
 }
 
