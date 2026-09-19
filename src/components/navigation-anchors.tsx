@@ -134,7 +134,7 @@ export function NavigationAnchors({
                 href={`#${anchor.id}`}
                 onClick={() => setAnchorId(anchor.id)}
                 className={cn(
-                  "text-sm w-full text-pretty text-muted-foreground transition-colors",
+                  "text-sm text-pretty block text-muted-foreground transition-colors",
                   anchor.id === anchorId && "text-foreground",
                 )}
               >
