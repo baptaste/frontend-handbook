@@ -74,9 +74,9 @@ explicit `dark:` pairs instead.
 ## State of the codebase
 
 Built out: `/`, `/experience`, `/projects`, `/projects/investment-platform`, `/engineering`,
-`/engineering/architecture`, `/engineering/state-management`.
+`/engineering/architecture`, `/engineering/state-management`, `/now`.
 
-Stubs: `/now`, `/contact` (`Hello "/route"!`).
+Stub: `/contact` (`Hello "/route"!`).
 
 `/engineering` lists six notes. Two are written and linked; the other four — Separation of
 concerns, Code style, User experience, Developer experience — render through `PlannedNote`
