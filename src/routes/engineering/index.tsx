@@ -1,54 +1,30 @@
 import { Link, createFileRoute } from "@tanstack/react-router"
-import { ArrowRightIcon } from "lucide-react"
 import type { LinkProps } from "@tanstack/react-router"
-import type { ReactNode } from "react"
 import { Article } from "@/components/article"
-import { Badge } from "@/components/ui/badge"
+import { ArrowButton } from "@/components/arrow-button"
 
 export const Route = createFileRoute("/engineering/")({
   component: RouteComponent,
 })
 
-type NoteProps = {
+type NoteCardProps = {
   title: string
   description: string
+  to?: LinkProps["to"]
 }
 
-function NoteBody({
-  title,
-  description,
-  trailing,
-}: NoteProps & { trailing: ReactNode }) {
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center gap-2">
-        <Article.Heading>{title}</Article.Heading>
-        {trailing}
-      </div>
-      <Article.Description>{description}</Article.Description>
-    </div>
-  )
-}
-
-function Note({ to, ...props }: NoteProps & { to: LinkProps["to"] }) {
-  return (
-    <Article.Card className="group">
-      <Link to={to}>
-        <NoteBody
-          {...props}
-          trailing={
-            <ArrowRightIcon className="opacity-0 group-hover:opacity-100 transition-opacity size-5 min-w-5" />
-          }
-        />
-      </Link>
-    </Article.Card>
-  )
-}
-
-function PlannedNote(props: NoteProps) {
+function NoteCard({ title, description, to }: NoteCardProps) {
   return (
     <Article.Card>
-      <NoteBody {...props} trailing={<Badge variant="outline">Soon</Badge>} />
+      <div className="space-y-2">
+        <Article.Heading>{title}</Article.Heading>
+        <Article.Description>{description}</Article.Description>
+      </div>
+      {to && (
+        <Link to={to}>
+          <ArrowButton>Read the note</ArrowButton>
+        </Link>
+      )}
     </Article.Card>
   )
 }
@@ -85,37 +61,34 @@ function RouteComponent() {
       </Article.Header>
 
       <Article.Section>
-        <Note
+        <NoteCard
           to="/engineering/architecture"
           title="Architecture"
           description="Where code should live, and what's allowed to depend on what."
         />
-
-        <Note
+        <NoteCard
           to="/engineering/state-management"
           title="State management"
           description="Whether a piece of state needs to exist at all, and where it goes when it does."
         />
 
-        <PlannedNote
+        {/*
+        <NoteCard
           title="Separation of concerns"
           description="The seams worth defending, the ones that only look like seams, and how to tell them apart before you commit."
         />
-
-        <PlannedNote
+        <NoteCard
           title="Code style"
           description="Functionnal programming and Repeat rather than abstract"
         />
-
-        <PlannedNote
+        <NoteCard
           title="User experience"
           description="The frontend owns the last mile. Most of what users experience as a bad product is an engineering decision wearing a disguise."
         />
-
-        <PlannedNote
+        <NoteCard
           title="Developer experience"
           description="Fast feedback, boring consistency, and the case for treating toolchain work as product work."
-        />
+        /> */}
       </Article.Section>
     </Article.Root>
   )

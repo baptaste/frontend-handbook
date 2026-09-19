@@ -1,8 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router"
-import { ArrowRightIcon } from "lucide-react"
 import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { ArrowButton } from "@/components/arrow-button"
 
 export const Route = createFileRoute("/projects/")({
   component: RouteComponent,
@@ -39,10 +38,7 @@ function RouteComponent() {
           </Article.SectionHeader>
 
           <Link to="/projects/investment-platform">
-            <Button>
-              Read the case study
-              <ArrowRightIcon />
-            </Button>
+            <ArrowButton>Read the case study</ArrowButton>
           </Link>
         </Article.Card>
       </Article.Section>

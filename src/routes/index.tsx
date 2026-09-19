@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router"
 import { useLayout } from "@/components/layout/use-layout"
 import { externalPaths } from "@/lib/utils/external-paths"
+import { ArrowButton } from "@/components/arrow-button"
 
 export const Route = createFileRoute("/")({ component: Home })
 
@@ -71,12 +72,17 @@ function Home() {
         </div>
 
         <div className="flex">
-          <Link
+          {/* <Link
             to="/experience"
             onClick={() => setState("in")}
             className="hover:shimmer shimmer-duration-2000 ml-auto hover:text-muted-foreground"
           >
             [ Explore the handbook → ]
+          </Link> */}
+          <Link to="/experience">
+            <ArrowButton onClick={() => setState("in")}>
+              Explore the handbook
+            </ArrowButton>
           </Link>
         </div>
       </div>
