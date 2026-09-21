@@ -8,6 +8,7 @@ export const externalPaths = {
   },
   socials: {
     linkedIn: "https://www.linkedin.com/in/baptiste-champbenoit",
+    github: "https://github.com/baptaste",
     mail: "mailto:baptiste.champbenoit@gmail.com",
   },
 }
