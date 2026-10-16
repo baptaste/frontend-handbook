@@ -10,12 +10,12 @@ export function Sidebar({
     <aside
       data-side={side}
       className={cn(
-        "hidden lg:block sticky top-14 bottom-0 min-h-[calc(100dvh-56px)] h-full",
+        "sticky top-14 bottom-0 min-h-[calc(100dvh-56px)] h-full",
         "data-[side=left]:left-0 data-[side=left]:border-r border-neutral-200 dark:border-neutral-800 data-[side=right]:border-none data-[side=right]:right-0",
         className,
       )}
     >
-      <div className="p-4">{children}</div>
+      <div className="px-4 pb-4 pt-6">{children}</div>
     </aside>
   )
 }

@@ -6,7 +6,7 @@ import { ArrowButton } from "@/components/arrow-button"
 export const Route = createFileRoute("/")({ component: Home })
 
 function Home() {
-  const { setState } = useLayout()
+  const { animate } = useLayout()
 
   return (
     <div className="lg:py-12 flex items-center flex-col justify-center">
@@ -74,13 +74,13 @@ function Home() {
         <div className="flex">
           {/* <Link
             to="/experience"
-            onClick={() => setState("in")}
+            onClick={() => animate("in")}
             className="hover:shimmer shimmer-duration-2000 ml-auto hover:text-muted-foreground"
           >
             [ Explore the handbook → ]
           </Link> */}
           <Link to="/experience">
-            <ArrowButton onClick={() => setState("in")}>
+            <ArrowButton onClick={() => animate("in")}>
               Explore the handbook
             </ArrowButton>
           </Link>

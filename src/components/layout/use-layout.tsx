@@ -7,40 +7,40 @@ import {
   useState,
 } from "react"
 import { useLocation, useRouter } from "@tanstack/react-router"
-import type { LayoutState } from "./layout-style"
+import type { LayoutAnimation } from "./layout-style"
 import { isIndexRoute, routesConfig } from "@/lib/utils/routes"
 
 const LayoutContext = createContext<{
-  state: LayoutState
-  setState: (value: LayoutState) => void
+  animation: LayoutAnimation
+  animate: (value: LayoutAnimation) => void
 } | null>(null)
 
 export function LayoutProvider({ children }: { children?: ReactNode }) {
-  const [state, setState] = useState<LayoutState>("off")
+  const [animation, animate] = useState<LayoutAnimation>("off")
   const { pathname } = useLocation()
   const router = useRouter()
 
-  const updater = useCallback((next: LayoutState) => {
-    setState(next)
+  const updater = useCallback((next: LayoutAnimation) => {
+    animate(next)
     if (next === "out") {
       setTimeout(() => {
-        setState("off")
+        animate("off")
       }, 200)
     }
   }, [])
 
   useEffect(() => {
     if (
-      state === "off" &&
+      animation === "off" &&
       !isIndexRoute(pathname, router) &&
       routesConfig.map((r) => r.path).some((p) => pathname.includes(p))
     ) {
-      setState("in")
+      animate("in")
     }
-  }, [state, pathname])
+  }, [animation, pathname])
 
   return (
-    <LayoutContext.Provider value={{ state, setState: updater }}>
+    <LayoutContext.Provider value={{ animation, animate: updater }}>
       {children}
     </LayoutContext.Provider>
   )

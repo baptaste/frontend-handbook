@@ -1,10 +1,10 @@
 import { cn } from "../../lib/utils/cn"
 
-export type LayoutState = "off" | "in" | "out"
+export type LayoutAnimation = "off" | "in" | "out"
 
 const OFF_STYLE = "opacity-0 pointer-events-none"
 
-export function getLayoutClassNames(state: LayoutState): {
+export function getLayoutClassNames(state: LayoutAnimation): {
   navbar: string
   leftSidebar: string
   rightSidebar: string

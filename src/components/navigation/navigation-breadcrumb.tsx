@@ -7,19 +7,19 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "./ui/breadcrumb"
-import { useLayout } from "./layout/use-layout"
+} from "../ui/breadcrumb"
+import { useLayout } from "../layout/use-layout"
 import { getCurrentRoute, getParentRoutes } from "@/lib/utils/routes"
 
 export function NavigationBreadcrumb() {
   const { pathname } = useLocation()
-  const { setState } = useLayout()
+  const { animate } = useLayout()
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        <BreadcrumbItem onClick={() => setState("out")}>
-          <BreadcrumbLink render={<Link to="/" />}>Home</BreadcrumbLink>
+        <BreadcrumbItem onClick={() => animate("out")}>
+          <BreadcrumbLink render={<Link to="/" />}>Introduction</BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbSeparator />
