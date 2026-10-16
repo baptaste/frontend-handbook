@@ -42,10 +42,18 @@ to `routesConfig` — a route file alone will not appear in the navigation.
 
 - `layout.tsx` — navbar, left sidebar (navigation), `main`, right sidebar ("On This Page"), in a
   5-column grid on `lg`
-- `use-layout.tsx` — `LayoutProvider` holds an animation state of `off | in | out`. `off` is the
-  bare homepage; `in` slides the shell in; `out` slides it back out and auto-returns to `off`
-  after 200ms. Links that cross the homepage boundary call `setState` themselves.
-- `layout-style.ts` — maps that state to the per-region animation classes
+- `use-layout.tsx` — `LayoutProvider` holds an `animation` of `off | in | out`
+  (`LayoutAnimation`). `off` is the bare homepage; `in` slides the shell in; `out` slides it back
+  out and auto-returns to `off` after 200ms. Links that cross the homepage boundary call
+  `animate` themselves.
+- `layout-style.ts` — maps that animation to the per-region classes
+
+**Navigation** — `src/components/navigation/`: `navbar.tsx` (fixed; holds the theme toggle and
+the mobile menu), `navigation-links.tsx`, `navigation-breadcrumb.tsx`, and
+`navigation-anchors/`. A page opts into "On This Page" by setting `staticData.anchors` on its
+route; `useRouteAnchors` reads them, `useAnchorsObserver` tracks the heading in view and keeps the
+URL hash in sync. They render as a list in the right sidebar on `lg` and as a popover above the
+content below it.
 
 **`src/components/article.tsx`** — the layout primitives content pages compose rather than
 styling headings ad hoc. Exported as a single namespace object: `Article.Root`, `Article.Header`,
@@ -84,8 +92,6 @@ note, add the route, then swap `PlannedNote` for `Note`.
 The engineering notes are written from the author's own material and voice. Do not invent
 experiences, opinions, dates or technical details for them — ask instead, and mark unknowns
 `[TODO: ...]` in the copy.
-
-The right sidebar renders only its "On This Page" heading — there is no table of contents yet.
 
 <!-- rtk-instructions v2 -->
 
