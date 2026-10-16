@@ -6,6 +6,8 @@ const router = createRouter({
   routeTree,
   defaultPreload: "intent",
   scrollRestoration: true,
+  // the page scrolls inside `main` (see layout.tsx), not the window
+  scrollToTopSelectors: ["main"],
 })
 
 declare module "@tanstack/react-router" {
