@@ -35,7 +35,7 @@ function RouteComponent() {
       <Article.Header>
         <Article.Title>Engineering</Article.Title>
         <Article.Description>
-          Opinionated notes on how I build interfaces — the principles I keep
+          Opinionated notes on how I build interfaces, the principles I keep
           coming back to, and the decisions where they actually got tested.
         </Article.Description>
         <Article.Description>
@@ -47,7 +47,7 @@ function RouteComponent() {
         </Article.Description>
         <Article.Description>
           These notes are less "best practices" and more the specific opinions
-          I've earned — each one anchored to a real decision, usually from a
+          I've earned, each one anchored to a real decision, usually from a
           large fintech codebase where getting it wrong had consequences.
         </Article.Description>
         <Article.Description>
@@ -55,8 +55,8 @@ function RouteComponent() {
           courses and tutorials on my own, then an intensive program, then
           production code. I use AI every day now and I'd not go back. But
           having built the mechanics by hand is why I can usually tell when
-          something plausible is quietly wrong — and that judgement is what
-          these notes are made of.
+          something plausible is quietly wrong, and that judgement is what these
+          notes are made of.
         </Article.Description>
       </Article.Header>
 

@@ -21,7 +21,7 @@ function RouteComponent() {
         <Article.Card>
           <Article.SectionHeader>
             <Article.SectionTitle id="investment-platform">
-              Tudigo — Investment platform · Fintech
+              Tudigo, Investment platform · Fintech
             </Article.SectionTitle>
             <Article.Tags>
               <Badge variant="secondary">Fintech</Badge>
@@ -30,7 +30,7 @@ function RouteComponent() {
             </Article.Tags>
             <Article.Description className="mt-4">
               A 215K-line, three-app platform that has channeled 240M€+ into
-              250+ companies — where a "small bug" can be a compliance problem.
+              250+ companies, where a "small bug" can be a compliance problem.
               Three years of chasing trust-critical bugs, modernizing the
               toolchain, and holding a large codebase together as the team
               shrank around it.

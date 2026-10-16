@@ -192,7 +192,7 @@ function RouteComponent() {
           <Article.Description>
             Features may import from core. <br />
             Core never imports from a feature. <br />
-            Features never import each other's internals — only what a feature
+            Features never import each other's internals, only what a feature
             publishes.
           </Article.Description>
         </Article.Card>
@@ -218,9 +218,9 @@ function RouteComponent() {
         <Article.Description>
           We enforce part of this with Nx module boundary tags, which catch a
           lib importing something it has no business importing. They can't see
-          inside a lib, though — whether a hook is exported from the right
-          level, or whether something ended up in <code>shared-external</code>{" "}
-          that no other feature actually needs. And going through{" "}
+          inside a lib, though, whether a hook is exported from the right level,
+          or whether something ended up in <code>shared-external</code> that no
+          other feature actually needs. And going through{" "}
           <code>shared-external</code> doesn't make a cycle impossible either.
           It only makes it deliberate, since the dependency has to be published
           on purpose rather than reached for. Neither the tooling nor the
@@ -232,11 +232,11 @@ function RouteComponent() {
       <Article.Section>
         <Article.Description>
           These are the same instinct at three different scales. Where a single
-          helper goes, what shape a feature takes, what's allowed to import what
-          — each one is decided on behalf of whoever opens the file next, which
-          is usually a colleague and sometimes me a year later. That's most of
-          what architecture means to me day to day: the small decisions that add
-          up to whether the next change is easy or expensive.
+          helper goes, what shape a feature takes, what's allowed to import
+          what: each one is decided on behalf of whoever opens the file next,
+          which is usually a colleague and sometimes me a year later. That's
+          most of what architecture means to me day to day: the small decisions
+          that add up to whether the next change is easy or expensive.
         </Article.Description>
       </Article.Section>
     </Article.Root>

@@ -3,15 +3,14 @@ import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
 
 const anchors = {
-  tudigo: { id: "tudigo", label: "Tudigo — Frontend Engineer" },
-  feelity: { id: "feelity", label: "Feelity — Frontend Engineer" },
-  libngo: { id: "libngo", label: "LibNGo — Frontend Engineer" },
+  tudigo: { id: "tudigo", label: "Tudigo, Frontend Engineer" },
+  feelity: { id: "feelity", label: "Feelity, Frontend Engineer" },
+  libngo: { id: "libngo", label: "LibNGo, Frontend Engineer" },
   learningToCode: { id: "learning-to-code", label: "Learning to code" },
 } as const
 
 export const Route = createFileRoute("/experience")({
   component: RouteComponent,
-  // staticData: { anchors: Object.values(anchors) },
 })
 
 function RouteComponent() {
@@ -47,8 +46,8 @@ function RouteComponent() {
           </Link>{" "}
           (240M€+ invested, 250K+ users). Seven months in, helped drive the
           platform's migration off a legacy micro-frontend architecture and
-          scaffolded the monorepo it still runs on today — project structure,
-          module boundaries and library choices — alongside the CTO. Worked
+          scaffolded the monorepo it still runs on today, project structure,
+          module boundaries and library choices, alongside the CTO. Worked
           across the full product since, from feature work to platform-wide
           reliability and toolchain improvements. Onboarded new hires into the
           codebase and mentored junior engineers as the team consolidated to a
@@ -117,7 +116,7 @@ function RouteComponent() {
           </Article.Tags>
         </Article.SectionHeader>
         <Article.Description>
-          I taught myself to code first — online courses, written tutorials and
+          I taught myself to code first, online courses, written tutorials and
           side projects, working through the fundamentals on my own. I then
           consolidated that into an intensive, fully remote fullstack JavaScript
           program at O'clock, specializing in front-end a little before the end

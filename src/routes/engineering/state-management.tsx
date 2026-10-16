@@ -46,9 +46,9 @@ function RouteComponent() {
           to exist in the first place. A lot of what ends up in a{" "}
           <code>useState</code> is something the component could have worked out
           from what it already has. A filtered list, a total, whether a form is
-          valid — none of those are state. They're values derived from state,
-          and storing them separately means keeping two things in sync for as
-          long as the component lives.
+          valid, none of those are state. They're values derived from state, and
+          storing them separately means keeping two things in sync for as long
+          as the component lives.
         </Article.Description>
         <Article.Description>
           So every time I come across a <code>useState</code> I didn't put there
@@ -66,7 +66,7 @@ function RouteComponent() {
           logout the app sometimes navigated away before both had finished
           clearing, so for a moment it still thought you were partly signed in
           and sent you back to the login screen. The fix was a few lines.
-          Finding it took far longer, because nothing errored — it was an
+          Finding it took far longer, because nothing errored; it was an
           ordering problem between two copies of the same fact.
         </Article.Description>
         <Article.Description>
@@ -105,9 +105,9 @@ function RouteComponent() {
         </Article.Description>
         <Article.Description>
           It has two problems. The first is structural: outlet context reaches
-          exactly one level down. A more deeply nested outlet cannot read it —
-          not awkwardly, not at all — so the day a route grows another level,
-          the pattern stops working and there's nothing to be done about it.
+          exactly one level down. A more deeply nested outlet cannot read it,
+          not awkwardly, not at all, so the day a route grows another level, the
+          pattern stops working and there's nothing to be done about it.
         </Article.Description>
         <Article.Description>
           The second is that it was usually unnecessary. In almost every case I
@@ -119,13 +119,13 @@ function RouteComponent() {
           than the live value.
         </Article.Description>
         <Article.Description>
-          So I've been unwinding it where I get the chance — when I have the
-          time and I'm already working in that feature — replacing the context
-          with a read from the query. Not a campaign, just not leaving it worse
-          than I found it. The general shape of the mistake is the part worth
-          keeping: a lot of what looks like shared client state is server state
-          you already have cached, and reaching for a client-state mechanism to
-          move it around only creates a second, staler copy of it.
+          So I've been unwinding it where I get the chance, when I have the time
+          and I'm already working in that feature, replacing the context with a
+          read from the query. Not a campaign, just not leaving it worse than I
+          found it. The general shape of the mistake is the part worth keeping:
+          a lot of what looks like shared client state is server state you
+          already have cached, and reaching for a client-state mechanism to move
+          it around only creates a second, staler copy of it.
         </Article.Description>
       </Article.Section>
 
@@ -143,8 +143,8 @@ function RouteComponent() {
         <Article.Card>
           <Choice label="The URL">
             When the state could or should be shared or persisted. A list page
-            with pagination, filtering and sorting — a project search, or an
-            investor's list of investments or repayments — belongs here.
+            with pagination, filtering and sorting, a project search, or an
+            investor's list of investments or repayments, belongs here.
           </Choice>
           <Choice label="Zustand">
             Global client state that changes often or is read in many places.
@@ -195,7 +195,7 @@ function RouteComponent() {
           It worked. It was also, sometimes, slow. The cause is the thing
           Context does by design: when the value changes, every consumer
           re-renders. In an editor, where some small piece of state is updating
-          constantly — a drag in progress, a field being typed into — that meant
+          constantly, a drag in progress, a field being typed into, that meant
           large parts of the interface re-rendering for changes they had no
           interest in.
         </Article.Description>
