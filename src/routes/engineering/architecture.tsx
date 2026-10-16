@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router"
 import { Article } from "@/components/article"
+import { pageTitle } from "@/lib/utils/page-title"
 
 const anchors = {
   whoUsesIt: {
@@ -18,6 +19,7 @@ const anchors = {
 } as const
 
 export const Route = createFileRoute("/engineering/architecture")({
+  head: () => ({ meta: [{ title: pageTitle("Architecture") }] }),
   component: RouteComponent,
   staticData: { anchors: Object.values(anchors) },
 })

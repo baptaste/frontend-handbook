@@ -3,8 +3,10 @@ import { Article } from "@/components/article"
 import { ArrowButton } from "@/components/arrow-button"
 import { Badge } from "@/components/ui/badge"
 import { externalPaths } from "@/lib/utils/external-paths"
+import { pageTitle } from "@/lib/utils/page-title"
 
 export const Route = createFileRoute("/contact")({
+  head: () => ({ meta: [{ title: pageTitle("Contact") }] }),
   component: RouteComponent,
 })
 

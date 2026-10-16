@@ -1,4 +1,4 @@
-import { Outlet, createRootRoute } from "@tanstack/react-router"
+import { HeadContent, Outlet, createRootRoute } from "@tanstack/react-router"
 
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools"
 import { TanStackDevtools } from "@tanstack/react-devtools"
@@ -9,12 +9,16 @@ import { LayoutProvider } from "@/components/layout/use-layout"
 import { ThemeProvider } from "@/lib/hooks/use-theme"
 
 export const Route = createRootRoute({
+  head: () => ({
+    meta: [{ title: "Baptiste Champbenoit - Frontend Handbook" }],
+  }),
   component: RootComponent,
 })
 
 function RootComponent() {
   return (
     <ThemeProvider>
+      <HeadContent />
       <LayoutProvider>
         <Layout>
           <Outlet />

@@ -2,8 +2,10 @@ import { Link, createFileRoute } from "@tanstack/react-router"
 import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
 import { ArrowButton } from "@/components/arrow-button"
+import { pageTitle } from "@/lib/utils/page-title"
 
 export const Route = createFileRoute("/projects/")({
+  head: () => ({ meta: [{ title: pageTitle("Projects") }] }),
   component: RouteComponent,
 })
 

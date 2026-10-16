@@ -2,8 +2,10 @@ import { Link, createFileRoute } from "@tanstack/react-router"
 import type { LinkProps } from "@tanstack/react-router"
 import { Article } from "@/components/article"
 import { ArrowButton } from "@/components/arrow-button"
+import { pageTitle } from "@/lib/utils/page-title"
 
 export const Route = createFileRoute("/engineering/")({
+  head: () => ({ meta: [{ title: pageTitle("Engineering") }] }),
   component: RouteComponent,
 })
 

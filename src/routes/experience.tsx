@@ -1,8 +1,10 @@
 import { Link, createFileRoute } from "@tanstack/react-router"
 import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
+import { pageTitle } from "@/lib/utils/page-title"
 
 export const Route = createFileRoute("/experience")({
+  head: () => ({ meta: [{ title: pageTitle("Experience") }] }),
   component: RouteComponent,
 })
 

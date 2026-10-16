@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router"
 import type { ReactNode } from "react"
 import { Article } from "@/components/article"
+import { pageTitle } from "@/lib/utils/page-title"
 
 const anchors = {
   doesItExist: { id: "does-it-exist", label: "First, does it need to exist?" },
@@ -11,6 +12,7 @@ const anchors = {
 } as const
 
 export const Route = createFileRoute("/engineering/state-management")({
+  head: () => ({ meta: [{ title: pageTitle("State management") }] }),
   component: RouteComponent,
   staticData: { anchors: Object.values(anchors) },
 })

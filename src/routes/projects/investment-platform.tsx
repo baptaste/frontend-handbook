@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router"
 import type { ReactNode } from "react"
 import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
+import { pageTitle } from "@/lib/utils/page-title"
 
 const anchors = {
   whatTudigoIs: { id: "what-tudigo-is", label: "What Tudigo is" },
@@ -18,6 +19,7 @@ const anchors = {
 } as const
 
 export const Route = createFileRoute("/projects/investment-platform")({
+  head: () => ({ meta: [{ title: pageTitle("Investment Platform") }] }),
   component: RouteComponent,
   staticData: { anchors: Object.values(anchors) },
 })

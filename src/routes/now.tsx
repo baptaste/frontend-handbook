@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router"
 import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
 import { externalPaths } from "@/lib/utils/external-paths"
+import { pageTitle } from "@/lib/utils/page-title"
 
 const anchors = {
   work: { id: "work", label: "At work" },
@@ -12,6 +13,7 @@ const anchors = {
 } as const
 
 export const Route = createFileRoute("/now")({
+  head: () => ({ meta: [{ title: pageTitle("Now") }] }),
   component: RouteComponent,
   staticData: { anchors: Object.values(anchors) },
 })
