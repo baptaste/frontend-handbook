@@ -55,7 +55,7 @@ export function SidebarNavigationAnchors({
               href={`#${anchor.id}`}
               onClick={() => setAnchorId(anchor.id)}
               className={cn(
-                "text-sm text-pretty block text-muted-foreground transition-colors",
+                "text-sm text-pretty block text-muted-foreground hover:text-foreground transition-colors",
                 anchor.id === anchorId && "text-foreground",
               )}
             >
