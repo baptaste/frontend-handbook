@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router"
+import { Link, createFileRoute } from "@tanstack/react-router"
 import { Article } from "@/components/article"
 import { Badge } from "@/components/ui/badge"
 import { externalPaths } from "@/lib/utils/external-paths"
@@ -23,7 +23,7 @@ function RouteComponent() {
     <Article.Root>
       <Article.Header>
         <Article.Title>Now</Article.Title>
-        <Article.Info>Updated September 2026</Article.Info>
+        <Article.Info>Updated October 2026</Article.Info>
         <Article.Description>
           What I'm focused on at the moment. This page changes every few months.
         </Article.Description>
@@ -85,8 +85,13 @@ function RouteComponent() {
           better API overall. Developer experience matters a lot to me.
         </Article.Description>
         <Article.Description>
-          For the last six months I've also been learning agentic coding, and
-          I've been following AI research regularly for a while now.
+          Since early 2026 I've also been learning agentic coding, and I've been
+          following AI research regularly for a while now. I wrote about how I
+          use it in{" "}
+          <Link to="/engineering/working-with-ai" className="pretty-link">
+            Working with AI
+          </Link>
+          .
         </Article.Description>
       </Article.Section>
 
