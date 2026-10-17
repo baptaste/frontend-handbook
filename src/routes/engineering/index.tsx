@@ -64,6 +64,11 @@ function RouteComponent() {
 
       <Article.Section>
         <NoteCard
+          to="/engineering/working-with-ai"
+          title="Working with AI"
+          description="How I went from autocomplete to agents, what I hand off, and the line I don't cross."
+        />
+        <NoteCard
           to="/engineering/architecture"
           title="Architecture"
           description="Where code should live, and what's allowed to depend on what."

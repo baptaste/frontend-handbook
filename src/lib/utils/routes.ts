@@ -40,6 +40,10 @@ export const routesConfig = [
         path: "/engineering/state-management",
         label: "State management",
       },
+      {
+        path: "/engineering/working-with-ai",
+        label: "Working with AI",
+      },
     ],
   },
   {

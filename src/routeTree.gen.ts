@@ -16,6 +16,7 @@ import { Route as NowRouteImport } from './routes/now'
 import { Route as EngineeringIndexRouteImport } from './routes/engineering/index'
 import { Route as EngineeringArchitectureRouteImport } from './routes/engineering/architecture'
 import { Route as EngineeringStateManagementRouteImport } from './routes/engineering/state-management'
+import { Route as EngineeringWorkingWithAiRouteImport } from './routes/engineering/working-with-ai'
 import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
 import { Route as ProjectsInvestmentPlatformRouteImport } from './routes/projects/investment-platform'
 
@@ -55,6 +56,12 @@ const EngineeringStateManagementRoute =
     path: '/engineering/state-management',
     getParentRoute: () => rootRouteImport,
   } as any)
+const EngineeringWorkingWithAiRoute =
+  EngineeringWorkingWithAiRouteImport.update({
+    id: '/engineering/working-with-ai',
+    path: '/engineering/working-with-ai',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
   id: '/projects/',
   path: '/projects/',
@@ -74,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/now': typeof NowRoute
   '/engineering/architecture': typeof EngineeringArchitectureRoute
   '/engineering/state-management': typeof EngineeringStateManagementRoute
+  '/engineering/working-with-ai': typeof EngineeringWorkingWithAiRoute
   '/projects/investment-platform': typeof ProjectsInvestmentPlatformRoute
   '/engineering/': typeof EngineeringIndexRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -85,6 +93,7 @@ export interface FileRoutesByTo {
   '/now': typeof NowRoute
   '/engineering/architecture': typeof EngineeringArchitectureRoute
   '/engineering/state-management': typeof EngineeringStateManagementRoute
+  '/engineering/working-with-ai': typeof EngineeringWorkingWithAiRoute
   '/projects/investment-platform': typeof ProjectsInvestmentPlatformRoute
   '/engineering': typeof EngineeringIndexRoute
   '/projects': typeof ProjectsIndexRoute
@@ -97,6 +106,7 @@ export interface FileRoutesById {
   '/now': typeof NowRoute
   '/engineering/architecture': typeof EngineeringArchitectureRoute
   '/engineering/state-management': typeof EngineeringStateManagementRoute
+  '/engineering/working-with-ai': typeof EngineeringWorkingWithAiRoute
   '/projects/investment-platform': typeof ProjectsInvestmentPlatformRoute
   '/engineering/': typeof EngineeringIndexRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/now'
     | '/engineering/architecture'
     | '/engineering/state-management'
+    | '/engineering/working-with-ai'
     | '/projects/investment-platform'
     | '/engineering/'
     | '/projects/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/now'
     | '/engineering/architecture'
     | '/engineering/state-management'
+    | '/engineering/working-with-ai'
     | '/projects/investment-platform'
     | '/engineering'
     | '/projects'
@@ -132,6 +144,7 @@ export interface FileRouteTypes {
     | '/now'
     | '/engineering/architecture'
     | '/engineering/state-management'
+    | '/engineering/working-with-ai'
     | '/projects/investment-platform'
     | '/engineering/'
     | '/projects/'
@@ -144,6 +157,7 @@ export interface RootRouteChildren {
   NowRoute: typeof NowRoute
   EngineeringArchitectureRoute: typeof EngineeringArchitectureRoute
   EngineeringStateManagementRoute: typeof EngineeringStateManagementRoute
+  EngineeringWorkingWithAiRoute: typeof EngineeringWorkingWithAiRoute
   ProjectsInvestmentPlatformRoute: typeof ProjectsInvestmentPlatformRoute
   EngineeringIndexRoute: typeof EngineeringIndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
@@ -200,6 +214,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EngineeringStateManagementRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/engineering/working-with-ai': {
+      id: '/engineering/working-with-ai'
+      path: '/engineering/working-with-ai'
+      fullPath: '/engineering/working-with-ai'
+      preLoaderRoute: typeof EngineeringWorkingWithAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/': {
       id: '/projects/'
       path: '/projects'
@@ -224,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   NowRoute: NowRoute,
   EngineeringArchitectureRoute: EngineeringArchitectureRoute,
   EngineeringStateManagementRoute: EngineeringStateManagementRoute,
+  EngineeringWorkingWithAiRoute: EngineeringWorkingWithAiRoute,
   ProjectsInvestmentPlatformRoute: ProjectsInvestmentPlatformRoute,
   EngineeringIndexRoute: EngineeringIndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
