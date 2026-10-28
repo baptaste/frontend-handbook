@@ -1,4 +1,4 @@
-import { MoonIcon, ParasolIcon } from "lucide-react"
+import { MoonIcon, SunIcon } from "lucide-react"
 import { Button } from "./ui/button"
 import type { ComponentProps } from "react"
 import { useTheme } from "@/lib/hooks/use-theme"
@@ -15,7 +15,7 @@ export function ThemeToggler({
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       {...props}
     >
-      {theme === "light" ? <MoonIcon /> : <ParasolIcon />}
+      {theme === "light" ? <MoonIcon /> : <SunIcon />}
     </Button>
   )
 }
