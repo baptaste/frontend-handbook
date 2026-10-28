@@ -11,10 +11,10 @@ function Home() {
   const frame = useFrame()
 
   return (
-    <div className="lg:p-12 mb-0 pt-6 flex items-start flex-col h-full">
-      <ThemeToggler className="ml-auto" />
+    <div className="grid h-full lg:p-12 py-6">
+      <ThemeToggler className="col-start-1 row-start-1 self-start justify-self-end" />
 
-      <div className="space-y-10 lg:mt-16 lg:mx-auto lg:max-w-3/5">
+      <div className="col-start-1 row-start-1 place-self-center space-y-10 lg:max-w-3/5">
         <header>
           <h1 className="text-lg font-bold text-neutral-950 dark:text-neutral-50">
             Frontend Handbook

@@ -46,8 +46,6 @@ export function Layout({ children }: { children?: ReactNode }) {
           className={cn(
             "w-full h-full px-6 py-4 lg:p-8 col-span-1 lg:col-span-4",
             withAnchors && "lg:col-span-3 lg:pb-[80dvh]",
-            // The intro takes the whole frame, sharing the first cell with the left
-            // sidebar, which is hidden there but still fades out on the way home
             isHome && "lg:col-span-5 lg:col-start-1 lg:row-start-1",
             isHome ? classNames.intro : classNames.page,
           )}

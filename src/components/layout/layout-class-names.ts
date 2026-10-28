@@ -23,7 +23,7 @@ export function getLayoutClassNames({
 
   return {
     intro: cn(
-      "transition-opacity duration-200 px-[calc(var(--frame-inset-x)+1.5rem)] lg:px-[calc(var(--frame-inset-x)+2rem)] overflow-y-hidden",
+      "transition-opacity duration-200 px-[calc(var(--frame-inset-x)+1.5rem)] lg:px-[calc(var(--frame-inset-x)+2rem)]",
       frameState !== "collapsed" && OFF_STYLE,
     ),
     navbar: navigationVisible ? "animate-enter-from-top" : OFF_STYLE,
