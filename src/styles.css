@@ -61,7 +61,7 @@ body {
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  --animate-enter-from-top: enter-from-top 400ms ease-out;
+  --animate-enter-from-top: enter-from-top 400ms ease-out both;
   @keyframes enter-from-top {
     0% {
       opacity: 0;
@@ -72,19 +72,8 @@ body {
       transform: translateY(0px);
     }
   }
-  --animate-leave-from-top: leave-from-top 200ms ease-in;
-  @keyframes leave-from-top {
-    0% {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-3px);
-    }
-  }
 
-  --animate-enter-from-left: enter-from-left 400ms ease-out;
+  --animate-enter-from-left: enter-from-left 400ms ease-out both;
   @keyframes enter-from-left {
     0% {
       opacity: 0;
@@ -95,19 +84,8 @@ body {
       transform: translateY(0px);
     }
   }
-  --animate-leave-from-left: leave-from-left 200ms ease-in;
-  @keyframes leave-from-left {
-    0% {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(-10px);
-    }
-  }
 
-  --animate-enter-from-right: enter-from-right 400ms ease-out;
+  --animate-enter-from-right: enter-from-right 400ms ease-out both;
   @keyframes enter-from-right {
     0% {
       opacity: 0;
@@ -116,17 +94,6 @@ body {
     100% {
       opacity: 1;
       transform: translateY(0px);
-    }
-  }
-  --animate-leave-from-right: leave-from-right 200ms ease-in;
-  @keyframes leave-from-right {
-    0% {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(10px);
     }
   }
 }

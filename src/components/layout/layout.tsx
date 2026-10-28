@@ -1,7 +1,7 @@
 import { useLocation, useRouter } from "@tanstack/react-router"
 import { type ReactNode, useRef } from "react"
-import { useLayout } from "./use-layout"
-import { getLayoutClassNames } from "./layout-style"
+import { getLayoutClassNames } from "./layout-class-names"
+import { useFrame } from "@/components/frame/use-frame"
 import { Navbar } from "@/components/navigation/navbar"
 import { NavigationBreadcrumb } from "@/components/navigation/navigation-breadcrumb"
 import { NavigationLinks } from "@/components/navigation/navigation-links"
@@ -17,17 +17,26 @@ export function Layout({ children }: { children?: ReactNode }) {
   const router = useRouter()
   const { pathname } = useLocation()
 
-  const { animation } = useLayout()
+  const frame = useFrame()
   const anchors = useRouteAnchors()
-  const classNames = getLayoutClassNames(animation)
 
+  const isHome = isIndexRoute(pathname, router)
   const withAnchors = anchors.length > 0
+  const classNames = getLayoutClassNames({
+    frameState: frame.state,
+    isHome,
+  })
 
   return (
-    <div className="bg-background">
+    <>
       <Navbar className={classNames.navbar} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 w-full h-dvh pt-14">
+      <div
+        className={cn(
+          "grid grid-cols-1 lg:grid-cols-5 w-full h-dvh",
+          !isHome && "pt-14",
+        )}
+      >
         <Sidebar className={cn("hidden lg:block", classNames.leftSidebar)}>
           <NavigationLinks />
         </Sidebar>
@@ -35,12 +44,15 @@ export function Layout({ children }: { children?: ReactNode }) {
         <main
           ref={ref}
           className={cn(
-            "w-full h-full space-y-4 overflow-y-auto px-6 py-4 lg:p-8 col-span-1 lg:col-span-4 lg:pb-20",
-            (withAnchors || isIndexRoute(pathname, router)) && "lg:col-span-3",
-            withAnchors && "lg:pb-[80dvh]",
+            "w-full h-full px-6 py-4 lg:p-8 col-span-1 lg:col-span-4",
+            withAnchors && "lg:col-span-3 lg:pb-[80dvh]",
+            // The intro takes the whole frame, sharing the first cell with the left
+            // sidebar, which is hidden there but still fades out on the way home
+            isHome && "lg:col-span-5 lg:col-start-1 lg:row-start-1",
+            isHome ? classNames.intro : classNames.page,
           )}
         >
-          {!isIndexRoute(pathname, router) && <NavigationBreadcrumb />}
+          {!isHome && <NavigationBreadcrumb />}
           {withAnchors && <PopoverNavigationAnchors ref={ref} />}
           {children}
         </main>
@@ -58,6 +70,6 @@ export function Layout({ children }: { children?: ReactNode }) {
           </div>
         </Sidebar>
       </div>
-    </div>
+    </>
   )
 }

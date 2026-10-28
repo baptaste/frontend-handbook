@@ -5,7 +5,7 @@ import { TanStackDevtools } from "@tanstack/react-devtools"
 
 import "../styles.css"
 import { Layout } from "@/components/layout/layout"
-import { LayoutProvider } from "@/components/layout/use-layout"
+import { Frame } from "@/components/frame/frame"
 import { ThemeProvider } from "@/lib/hooks/use-theme"
 
 export const Route = createRootRoute({
@@ -19,7 +19,7 @@ function RootComponent() {
   return (
     <ThemeProvider>
       <HeadContent />
-      <LayoutProvider>
+      <Frame>
         <Layout>
           <Outlet />
           <TanStackDevtools
@@ -34,7 +34,7 @@ function RootComponent() {
             ]}
           />
         </Layout>
-      </LayoutProvider>
+      </Frame>
     </ThemeProvider>
   )
 }

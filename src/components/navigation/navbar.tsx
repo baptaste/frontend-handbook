@@ -2,13 +2,11 @@ import { Link } from "@tanstack/react-router"
 import { useRef, useState } from "react"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 
-import { useLayout } from "../layout/use-layout"
 import { ThemeToggler } from "../theme-toggler"
 import { NavigationLinks } from "./navigation-links"
 import { cn } from "@/lib/utils/cn"
 
 export function Navbar({ className }: { className?: string }) {
-  const { animate } = useLayout()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const ref = useRef<HTMLDivElement | null>(null)
 
@@ -20,11 +18,7 @@ export function Navbar({ className }: { className?: string }) {
         className,
       )}
     >
-      <Link
-        to="/"
-        onClick={() => animate("out")}
-        className="text-neutral-950 dark:text-neutral-50"
-      >
+      <Link to="/" className="text-neutral-950 dark:text-neutral-50">
         Frontend Handbook
       </Link>
 

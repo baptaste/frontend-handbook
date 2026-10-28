@@ -1,16 +1,20 @@
-import { Link, createFileRoute } from "@tanstack/react-router"
-import { useLayout } from "@/components/layout/use-layout"
+import { createFileRoute, useNavigate } from "@tanstack/react-router"
+import { getFrameTransitionMs, useFrame } from "@/components/frame/use-frame"
 import { externalPaths } from "@/lib/utils/external-paths"
 import { ArrowButton } from "@/components/arrow-button"
+import { ThemeToggler } from "@/components/theme-toggler"
 
 export const Route = createFileRoute("/")({ component: Home })
 
 function Home() {
-  const { animate } = useLayout()
+  const navigate = useNavigate()
+  const frame = useFrame()
 
   return (
-    <div className="lg:py-12 flex items-center flex-col justify-center">
-      <div className="space-y-10 max-w-prose">
+    <div className="lg:p-12 mb-0 pt-6 flex items-start flex-col h-full">
+      <ThemeToggler className="ml-auto" />
+
+      <div className="space-y-10 lg:mt-16 lg:mx-auto lg:max-w-3/5">
         <header>
           <h1 className="text-lg font-bold text-neutral-950 dark:text-neutral-50">
             Frontend Handbook
@@ -72,18 +76,18 @@ function Home() {
         </div>
 
         <div className="flex">
-          {/* <Link
-            to="/experience"
-            onClick={() => animate("in")}
-            className="hover:shimmer shimmer-duration-2000 ml-auto hover:text-muted-foreground"
+          <ArrowButton
+            onClick={async () => {
+              // Expand the frame over the homepage first, then swap in the handbook
+              frame.expand()
+              await new Promise((resolve) =>
+                setTimeout(resolve, getFrameTransitionMs()),
+              )
+              navigate({ to: "/experience" })
+            }}
           >
-            [ Explore the handbook → ]
-          </Link> */}
-          <Link to="/experience">
-            <ArrowButton onClick={() => animate("in")}>
-              Explore the handbook
-            </ArrowButton>
-          </Link>
+            Explore the handbook
+          </ArrowButton>
         </div>
       </div>
     </div>

@@ -42,11 +42,20 @@ to `routesConfig` — a route file alone will not appear in the navigation.
 
 - `layout.tsx` — navbar, left sidebar (navigation), `main`, right sidebar ("On This Page"), in a
   5-column grid on `lg`
-- `use-layout.tsx` — `LayoutProvider` holds an `animation` of `off | in | out`
-  (`LayoutAnimation`). `off` is the bare homepage; `in` slides the shell in; `out` slides it back
-  out and auto-returns to `off` after 200ms. Links that cross the homepage boundary call
-  `animate` themselves.
-- `layout-style.ts` — maps that animation to the per-region classes
+- `layout-class-names.ts` — maps the frame state to the per-region classes (which regions show)
+
+**Frame** — `src/components/frame/`: the frame wraps the layout. On the homepage it is clipped
+inset over a shader; inside the handbook it covers the window. It expands by transitioning
+`clip-path`, so its content never reflows. The layout reads the frame state; the frame knows
+nothing about the layout.
+
+- `frame.tsx` — `Frame` holds the `FrameState`, renders the shader and the clipped container,
+  and provides the state
+- `use-frame.tsx` — `FrameState`: `collapsed` (homepage), `expanded` (covers the window) or
+  `collapsing` (shrinking back, for `getFrameTransitionMs()`, shorter below `lg`), and `useFrame`. The homepage button
+  calls `expand`, waits for the transition, then navigates; every other crossing of the
+  homepage boundary (links, back / forward) is picked up from the route change. A direct load
+  starts in the matching state, without animating.
 
 **Navigation** — `src/components/navigation/`: `navbar.tsx` (fixed; holds the theme toggle and
 the mobile menu), `navigation-links.tsx`, `navigation-breadcrumb.tsx`, and
