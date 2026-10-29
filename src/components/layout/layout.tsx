@@ -5,6 +5,7 @@ import { useFrame } from "@/components/frame/use-frame"
 import { Navbar } from "@/components/navigation/navbar"
 import { NavigationBreadcrumb } from "@/components/navigation/navigation-breadcrumb"
 import { NavigationLinks } from "@/components/navigation/navigation-links"
+import { NavigationPager } from "@/components/navigation/navigation-pager"
 import { PopoverNavigationAnchors } from "@/components/navigation/navigation-anchors/popover-navigation-anchors"
 import { SidebarNavigationAnchors } from "@/components/navigation/navigation-anchors/sidebar-navigation-anchors"
 import { useRouteAnchors } from "@/components/navigation/navigation-anchors/use-route-anchors"
@@ -49,6 +50,7 @@ export function Layout({ children }: { children?: ReactNode }) {
             {!isRoot && <NavigationBreadcrumb className="lg:hidden" />}
             {withAnchors && <PopoverNavigationAnchors ref={ref} />}
             {children}
+            {!isRoot && <NavigationPager className="pt-12" />}
           </div>
         </main>
 

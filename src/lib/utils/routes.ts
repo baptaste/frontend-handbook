@@ -56,14 +56,32 @@ export const routesConfig = [
   },
 ] satisfies RouteDef[]
 
+// In reading order: each page comes before its sub-pages
 export function getFlatRoutes(): RouteDef[] {
-  return routesConfig.flatMap(({ routes, ...route }) =>
-    [...(routes ?? []), { ...route }].flat(),
-  )
+  return routesConfig.flatMap(({ routes, ...route }) => [
+    { ...route },
+    ...(routes ?? []),
+  ])
 }
 
 export function getCurrentRoute(pathname: string): RouteDef | undefined {
   return getFlatRoutes().find((r) => pathname === r.path)
+}
+
+// The pages before and after the current one in the handbook. The homepage is
+// left out: it sits outside the handbook, and stepping back to it collapses the frame
+export function getAdjacentRoutes(pathname: string): {
+  previous?: RouteDef
+  next?: RouteDef
+} {
+  const handbookRoutes = getFlatRoutes().filter((r) => r.path !== "/")
+  const index = handbookRoutes.findIndex((r) => r.path === pathname)
+  if (index === -1) return {}
+
+  return {
+    previous: handbookRoutes[index - 1],
+    next: handbookRoutes[index + 1],
+  }
 }
 
 export function getParentRoutes(pathname: string): RouteDef[] {
