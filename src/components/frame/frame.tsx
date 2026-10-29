@@ -45,7 +45,7 @@ export function Frame({ children }: { children?: ReactNode }) {
           it is already mounted while the frame shrinks */}
       {isHome && (
         <Shader className="fixed inset-0 -z-10">
-          <FlowingGradient distortion={0.2} />
+          <FlowingGradient distortion={0.2} speed={0.5} />
         </Shader>
       )}
 
