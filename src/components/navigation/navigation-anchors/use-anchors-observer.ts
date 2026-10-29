@@ -3,10 +3,13 @@ import type { RouteAnchor } from "./use-route-anchors"
 
 /**
  * Where in the scroll container a heading becomes "active", 20% from the top.
- * Coupled to the last section's minimum height in `layout.tsx`, which leaves
- * enough room below the last heading for it to reach this line.
+ * A short last section never lets its heading reach this line, so reaching the
+ * bottom of the page activates the last heading instead.
  */
 const ACTIVE_LINE = 0.2
+
+// Tolerance for fractional scroll positions
+const BOTTOM_THRESHOLD = 2
 
 export function useAnchorsObserver(
   ref: RefObject<HTMLDivElement | null>,
@@ -29,37 +32,47 @@ export function useAnchorsObserver(
       )
       .filter((target) => target !== null)
 
-    // prevents unnecessary state update
-    let current: string | null = null
+    // Prevents unnecessary state updates. Undefined until the first check, which
+    // therefore always writes, clearing the previous page's anchor
+    let current: string | null | undefined
 
-    const observer = new IntersectionObserver(
-      () => {
-        const line =
-          root.getBoundingClientRect().top + root.clientHeight * ACTIVE_LINE
+    const update = () => {
+      const line =
+        root.getBoundingClientRect().top + root.clientHeight * ACTIVE_LINE
+      // A page too short to scroll starts at its bottom: keep it on the line rule
+      const atBottom =
+        root.scrollTop > 0 &&
+        root.scrollTop + root.clientHeight >=
+          root.scrollHeight - BOTTOM_THRESHOLD
 
-        let active: string | null = null
+      let active: string | null = null
 
+      if (atBottom) {
+        active = targets.at(-1)?.id ?? null
+      } else {
         for (const t of targets) {
           if (t.getBoundingClientRect().top > line) break
           active = t.id
         }
+      }
 
-        if (active === current) return
-        current = active
+      if (active === current) return
+      current = active
 
-        setAnchorId(active)
-        onAnchorChange(active)
-      },
-      {
-        root,
-        threshold: 0,
-        rootMargin: `0px 0px -${(1 - ACTIVE_LINE) * 100}% 0px`,
-      },
-    )
+      setAnchorId(active)
+      onAnchorChange(active)
+    }
 
-    for (const t of targets) observer.observe(t)
+    // Wait a frame for the router to reset the scroll after a page change: run
+    // now, the old position would pick an anchor, and syncing its hash to the
+    // URL would cancel that reset
+    const frame = requestAnimationFrame(update)
+    root.addEventListener("scroll", update, { passive: true })
 
-    return () => observer.disconnect()
+    return () => {
+      cancelAnimationFrame(frame)
+      root.removeEventListener("scroll", update)
+    }
   }, [ref, anchors])
 
   return [anchorId, setAnchorId] as const
