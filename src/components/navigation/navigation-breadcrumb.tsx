@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@tanstack/react-router"
+import { Link, useLocation, useRouter } from "@tanstack/react-router"
 import { Fragment } from "react/jsx-runtime"
 import {
   Breadcrumb,
@@ -8,24 +8,49 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "../ui/breadcrumb"
-import { getCurrentRoute, getParentRoutes } from "@/lib/utils/routes"
+import {
+  getCurrentRoute,
+  getParentRoutes,
+  isRootRoute,
+} from "@/lib/utils/routes"
 
-export function NavigationBreadcrumb() {
+export function NavigationBreadcrumb({
+  className,
+  rootLabel = "Introduction",
+  rootClassName,
+  onNavigate,
+}: {
+  className?: string
+  rootLabel?: string
+  rootClassName?: string
+  onNavigate?: () => void
+}) {
+  const router = useRouter()
   const { pathname } = useLocation()
+  const isRoot = isRootRoute(pathname, router)
 
   return (
-    <Breadcrumb>
+    <Breadcrumb className={className}>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink render={<Link to="/" />}>Introduction</BreadcrumbLink>
+          <BreadcrumbLink
+            render={<Link to="/" />}
+            className={rootClassName}
+            onClick={onNavigate}
+          >
+            {rootLabel}
+          </BreadcrumbLink>
         </BreadcrumbItem>
 
-        <BreadcrumbSeparator />
+        {!isRoot && <BreadcrumbSeparator />}
 
         {getParentRoutes(pathname).map((route) => (
           <Fragment key={route.path}>
             <BreadcrumbItem>
-              <BreadcrumbLink render={<Link to={route.path} />}>
+              <BreadcrumbLink
+                render={<Link to={route.path} />}
+                onClick={onNavigate}
+              >
                 {route.label}
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -34,9 +59,11 @@ export function NavigationBreadcrumb() {
           </Fragment>
         ))}
 
-        <BreadcrumbItem>
-          <BreadcrumbPage>{getCurrentRoute(pathname)?.label}</BreadcrumbPage>
-        </BreadcrumbItem>
+        {!isRoot && (
+          <BreadcrumbItem>
+            <BreadcrumbPage>{getCurrentRoute(pathname)?.label}</BreadcrumbPage>
+          </BreadcrumbItem>
+        )}
       </BreadcrumbList>
     </Breadcrumb>
   )

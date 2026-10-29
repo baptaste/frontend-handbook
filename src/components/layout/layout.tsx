@@ -50,7 +50,7 @@ export function Layout({ children }: { children?: ReactNode }) {
               "lg:[&_article>section:last-child]:min-h-[calc(100dvh-12.125rem)]",
           )}
         >
-          {!isRoot && <NavigationBreadcrumb />}
+          {!isRoot && <NavigationBreadcrumb className="lg:hidden" />}
           {withAnchors && <PopoverNavigationAnchors ref={ref} />}
           {children}
         </main>

@@ -12,9 +12,9 @@ import {
   CollapsibleTrigger,
 } from "../ui/collapsible"
 import { Separator } from "../ui/separator"
+import { NavigationBreadcrumb } from "./navigation-breadcrumb"
 import { NavigationLinks } from "./navigation-links"
 import { cn } from "@/lib/utils/cn"
-import { routesConfig } from "@/lib/utils/routes"
 import { externalPaths } from "@/lib/utils/external-paths"
 
 const socials = [
@@ -94,22 +94,17 @@ export function Navbar({ className }: { className?: string }) {
       )}
     >
       <div className="h-14 flex items-center justify-between">
-        <Link to="/" className="text-neutral-950 dark:text-neutral-50">
+        <Link
+          to="/"
+          className="lg:hidden text-neutral-950 dark:text-neutral-50"
+        >
           Frontend Handbook
         </Link>
-
-        <nav className="hidden lg:flex items-center gap-x-8">
-          {routesConfig.map((route) => (
-            <Link
-              key={route.path}
-              to={route.path}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              activeProps={{ className: "text-foreground!" }}
-            >
-              {route.label}
-            </Link>
-          ))}
-        </nav>
+        <NavigationBreadcrumb
+          className="hidden lg:block"
+          rootLabel="Frontend Handbook"
+          rootClassName="text-neutral-950 dark:text-neutral-50"
+        />
 
         <div className="flex items-center gap-1">
           <SocialLinks className="hidden lg:flex" />
@@ -134,6 +129,8 @@ export function Navbar({ className }: { className?: string }) {
 
       <CollapsibleContent className="lg:hidden h-(--collapsible-panel-height) overflow-y-auto transition-[height] duration-300 ease data-starting-style:h-0 data-ending-style:h-0">
         <div className="pr-3 h-[calc(100dvh-5.75rem)] flex flex-col gap-4 py-4 text-neutral-950 dark:text-neutral-50">
+          <NavigationBreadcrumb onNavigate={() => setIsMenuOpen(false)} />
+          <Separator className="dark:bg-border" />
           <NavigationLinks
             className="[&_a]:px-0 [&_a]:bg-transparent [&_a]:dark:bg-transparent"
             onNavigate={() => setIsMenuOpen(false)}
