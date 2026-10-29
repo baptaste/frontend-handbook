@@ -40,9 +40,14 @@ export function Layout({ children }: { children?: ReactNode }) {
           ref={ref}
           className={cn(
             "w-full h-full px-6 py-4 lg:p-8 col-span-1 lg:col-span-4",
-            withAnchors && "lg:col-span-3 lg:pb-[80dvh]",
             isHome && "lg:col-span-5 lg:col-start-1 lg:row-start-1",
             isHome ? classNames.intro : classNames.page,
+            withAnchors && "lg:col-span-3",
+            // Give the last section at least a screen of height, so its heading can
+            // scroll up to the active line in `use-anchors-observer.ts`: the heading's
+            // scroll margin (7.125rem) and the page's bottom padding (5rem) excluded
+            withAnchors &&
+              "lg:[&_article>section:last-child]:min-h-[calc(100dvh-12.125rem)]",
           )}
         >
           {!isHome && <NavigationBreadcrumb />}

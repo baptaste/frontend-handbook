@@ -3,8 +3,8 @@ import type { RouteAnchor } from "./use-route-anchors"
 
 /**
  * Where in the scroll container a heading becomes "active", 20% from the top.
- * Coupled to the `main` bottom padding in `layout.tsx`, which has to leave the
- * remaining 80% below the last heading so it can reach this line.
+ * Coupled to the last section's minimum height in `layout.tsx`, which leaves
+ * enough room below the last heading for it to reach this line.
  */
 const ACTIVE_LINE = 0.2
 
