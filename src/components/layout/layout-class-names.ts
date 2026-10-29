@@ -8,10 +8,10 @@ const OFF_STYLE =
 
 export function getLayoutClassNames({
   frameState,
-  isHome,
+  isRoot,
 }: {
   frameState: FrameState
-  isHome: boolean
+  isRoot: boolean
 }): {
   intro: string
   navbar: string
@@ -19,7 +19,7 @@ export function getLayoutClassNames({
   page: string
   rightSidebar: string
 } {
-  const navigationVisible = frameState === "expanded" && !isHome
+  const navigationVisible = frameState === "expanded" && !isRoot
 
   return {
     intro: cn(

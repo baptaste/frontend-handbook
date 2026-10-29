@@ -6,17 +6,17 @@ import {
   type FrameState,
   getFrameTransitionMs,
 } from "./use-frame"
-import { isIndexRoute } from "@/lib/utils/routes"
+import { isRootRoute } from "@/lib/utils/routes"
 import { cn } from "@/lib/utils/cn"
 
 export function Frame({ children }: { children?: ReactNode }) {
   const { pathname } = useLocation()
   const router = useRouter()
-  const isHome = isIndexRoute(pathname, router)
+  const isRoot = isRootRoute(pathname, router)
 
   // Start in the state matching the landing page so a direct load never animates
   const [state, setState] = useState<FrameState>(
-    isHome ? "collapsed" : "expanded",
+    isRoot ? "collapsed" : "expanded",
   )
 
   const expand = useCallback(() => setState("expanded"), [])
@@ -25,7 +25,7 @@ export function Frame({ children }: { children?: ReactNode }) {
   // to the homepage, and the browser's back / forward buttons. Only route changes
   // matter here: the homepage button expands the frame before navigating on purpose
   useEffect(() => {
-    if (!isHome) {
+    if (!isRoot) {
       setState("expanded")
       return
     }
@@ -37,13 +37,13 @@ export function Frame({ children }: { children?: ReactNode }) {
       getFrameTransitionMs(),
     )
     return () => clearTimeout(timeout)
-  }, [isHome])
+  }, [isRoot])
 
   return (
     <FrameContext.Provider value={{ state, expand }}>
       {/* Only the homepage uncovers the shader; links back home navigate first, so
           it is already mounted while the frame shrinks */}
-      {isHome && (
+      {isRoot && (
         <Shader className="fixed inset-0 -z-10">
           <FlowingGradient distortion={0.2} speed={0.5} />
         </Shader>

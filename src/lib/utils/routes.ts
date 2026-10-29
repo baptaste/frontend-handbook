@@ -75,7 +75,7 @@ export function getParentRoutes(pathname: string): RouteDef[] {
   )
 }
 
-export function isIndexRoute(
+export function isRootRoute(
   pathname: string,
   router: ReturnType<typeof useRouter>,
 ): boolean {

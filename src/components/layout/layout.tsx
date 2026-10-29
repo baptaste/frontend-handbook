@@ -9,7 +9,7 @@ import { PopoverNavigationAnchors } from "@/components/navigation/navigation-anc
 import { SidebarNavigationAnchors } from "@/components/navigation/navigation-anchors/sidebar-navigation-anchors"
 import { useRouteAnchors } from "@/components/navigation/navigation-anchors/use-route-anchors"
 import { Sidebar } from "@/components/sidebar"
-import { isIndexRoute } from "@/lib/utils/routes"
+import { isRootRoute } from "@/lib/utils/routes"
 import { cn } from "@/lib/utils/cn"
 
 export function Layout({ children }: { children?: ReactNode }) {
@@ -20,11 +20,11 @@ export function Layout({ children }: { children?: ReactNode }) {
   const frame = useFrame()
   const anchors = useRouteAnchors()
 
-  const isHome = isIndexRoute(pathname, router)
+  const isRoot = isRootRoute(pathname, router)
   const withAnchors = anchors.length > 0
   const classNames = getLayoutClassNames({
     frameState: frame.state,
-    isHome,
+    isRoot,
   })
 
   return (
@@ -40,8 +40,8 @@ export function Layout({ children }: { children?: ReactNode }) {
           ref={ref}
           className={cn(
             "w-full h-full px-6 py-4 lg:p-8 col-span-1 lg:col-span-4",
-            isHome && "lg:col-span-5 lg:col-start-1 lg:row-start-1",
-            isHome ? classNames.intro : classNames.page,
+            isRoot && "lg:col-span-5 lg:col-start-1 lg:row-start-1",
+            isRoot ? classNames.intro : classNames.page,
             withAnchors && "lg:col-span-3",
             // Give the last section at least a screen of height, so its heading can
             // scroll up to the active line in `use-anchors-observer.ts`: the heading's
@@ -50,7 +50,7 @@ export function Layout({ children }: { children?: ReactNode }) {
               "lg:[&_article>section:last-child]:min-h-[calc(100dvh-12.125rem)]",
           )}
         >
-          {!isHome && <NavigationBreadcrumb />}
+          {!isRoot && <NavigationBreadcrumb />}
           {withAnchors && <PopoverNavigationAnchors ref={ref} />}
           {children}
         </main>
