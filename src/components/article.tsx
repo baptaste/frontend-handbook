@@ -3,10 +3,7 @@ import { cn } from "@/lib/utils/cn"
 
 function Root({ className, children, ...props }: ComponentProps<"article">) {
   return (
-    <article
-      className={cn("min-h-dvh w-full space-y-12", className)}
-      {...props}
-    >
+    <article className={cn("w-full space-y-12", className)} {...props}>
       {children}
     </article>
   )
