@@ -87,7 +87,7 @@ export function Navbar({ className }: { className?: string }) {
       open={isMenuOpen}
       onOpenChange={setIsMenuOpen}
       className={cn(
-        "z-navbar fixed top-4 left-3 right-3 lg:left-4 lg:right-4  m-px pl-6 pr-3 lg:px-8 rounded-lg",
+        "z-navbar fixed top-4 left-3 right-3 lg:left-4 lg:right-4 m-px pl-6 pr-3 lg:px-8 rounded-lg",
         // liquid glass
         "bg-background/60 backdrop-blur-md backdrop-saturate-150 border border-black/5 dark:border-white/10",
         className,
@@ -110,12 +110,12 @@ export function Navbar({ className }: { className?: string }) {
           <SocialLinks className="hidden lg:flex" />
           <Separator
             orientation="vertical"
-            className="hidden lg:block dark:bg-border h-4 data-vertical:self-center"
+            className="hidden lg:block h-4 data-vertical:self-center"
           />
           <ThemeToggler />
           <Separator
             orientation="vertical"
-            className="lg:hidden dark:bg-border h-4 data-vertical:self-center"
+            className="lg:hidden h-4 data-vertical:self-center"
           />
           <CollapsibleTrigger className="h-8 lg:hidden dark:text-neutral-50 text-neutral-950 px-3">
             {isMenuOpen ? (
@@ -130,12 +130,12 @@ export function Navbar({ className }: { className?: string }) {
       <CollapsibleContent className="lg:hidden h-(--collapsible-panel-height) overflow-y-auto transition-[height] duration-300 ease data-starting-style:h-0 data-ending-style:h-0">
         <div className="pr-3 h-[calc(100dvh-5.75rem)] flex flex-col gap-4 py-4 text-neutral-950 dark:text-neutral-50">
           <NavigationBreadcrumb onNavigate={() => setIsMenuOpen(false)} />
-          <Separator className="dark:bg-border" />
+          <Separator />
           <NavigationLinks
             className="[&_a]:px-0 [&_a]:bg-transparent [&_a]:dark:bg-transparent"
             onNavigate={() => setIsMenuOpen(false)}
           />
-          <Separator className="dark:bg-border" />
+          <Separator />
           <SocialLinks
             className="flex-col items-start space-y-4 [&_a]:px-0 [&_svg]:mr-2"
             labels
