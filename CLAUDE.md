@@ -41,8 +41,11 @@ to `routesConfig` — a route file alone will not appear in the navigation.
 **Layout shell** — `src/components/layout/`:
 
 - `layout.tsx` — navbar, left sidebar (navigation), `main`, right sidebar ("On This Page"), in a
-  5-column grid on `lg`
-- `layout-class-names.ts` — maps the frame state to the per-region classes (which regions show)
+  5-column grid on `lg`. `main` is the scroll container and scrolls under the navbar, so the
+  glass has something to blur; its top padding only clears the navbar at rest
+- `layout-class-names.ts` — maps the frame state to the per-region classes (which regions show).
+  The page's enter animation goes on `content`, a wrapper inside `main`, never on `main` itself:
+  `main`'s `animation` drives its `scroll-fade-b`, and a second one would cancel the fade
 
 **Frame** — `src/components/frame/`: the frame wraps the layout. On the homepage it is clipped
 inset over a shader; inside the handbook it covers the window. It expands by transitioning
@@ -57,12 +60,22 @@ nothing about the layout.
   homepage boundary (links, back / forward) is picked up from the route change. A direct load
   starts in the matching state, without animating.
 
-**Navigation** — `src/components/navigation/`: `navbar.tsx` (fixed; holds the theme toggle and
-the mobile menu), `navigation-links.tsx`, `navigation-breadcrumb.tsx`, and
-`navigation-anchors/`. A page opts into "On This Page" by setting `staticData.anchors` on its
-route; `useRouteAnchors` reads them, `useAnchorsObserver` tracks the heading in view and keeps the
-URL hash in sync. They render as a list in the right sidebar on `lg` and as a popover above the
-content below it.
+**Navigation** — `src/components/navigation/`: `navbar.tsx`, `navigation-links.tsx`,
+`navigation-breadcrumb.tsx`, and `navigation-anchors/`.
+
+- The navbar is a fixed, inset bar with a liquid glass effect. It holds the social links, the
+  theme toggle and, below `lg`, the menu.
+- The sidebar is the only list of pages on `lg`; the navbar deliberately does not repeat it.
+- The breadcrumb shows where you are, in a different place per breakpoint. On `lg` it sits in the
+  navbar with the brand as its first crumb (`rootLabel`). Below `lg` it sits at the top of the
+  content, and again at the top of the open menu. On `/` it shows only its first crumb.
+- The mobile menu is a `Collapsible` whose root is the navbar itself, so the open menu is one
+  blurred surface: a separate popup would blur on its own and show a seam against the bar. Its
+  links do not mark the current page; the breadcrumb above them does. It cannot open on `lg`.
+- A page opts into "On This Page" by setting `staticData.anchors` on its route;
+  `useRouteAnchors` reads them, `useAnchorsObserver` tracks the heading in view and keeps the URL
+  hash in sync. They render as a list in the right sidebar on `lg` and as a popover above the
+  content below it.
 
 **`src/components/article.tsx`** — the layout primitives content pages compose rather than
 styling headings ad hoc. Exported as a single namespace object: `Article.Root`, `Article.Header`,
