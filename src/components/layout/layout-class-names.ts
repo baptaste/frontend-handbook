@@ -17,6 +17,7 @@ export function getLayoutClassNames({
   navbar: string
   leftSidebar: string
   page: string
+  content: string
   rightSidebar: string
 } {
   const navigationVisible = frameState === "expanded" && !isRoot
@@ -36,7 +37,12 @@ export function getLayoutClassNames({
     page: cn(
       // The page scrolls under the navbar (top-4 + h-14.5) so its glass has
       // something to blur; the padding only clears it at rest
-      "space-y-4 lg:pb-20 overflow-y-auto pt-[calc(4.625rem+1rem)] lg:pt-[calc(4.625rem+2rem)]",
+      "lg:pb-20 overflow-y-auto pt-[calc(4.625rem+1rem)] lg:pt-[calc(4.625rem+2rem)]",
+    ),
+    // Wraps what `main` renders: the enter animation can't sit on `main` itself,
+    // whose `animation` already drives its scroll fade
+    content: cn(
+      isRoot ? "h-full" : "space-y-4",
       navigationVisible && "animate-enter-from-top [animation-delay:120ms]",
     ),
     rightSidebar: cn(

@@ -39,7 +39,7 @@ export function Layout({ children }: { children?: ReactNode }) {
         <main
           ref={ref}
           className={cn(
-            "w-full h-full px-6 py-4 lg:p-8 col-span-1 lg:col-span-4",
+            "w-full h-full px-6 py-4 lg:p-8 col-span-1 lg:col-span-4 scroll-fade-b scrollbar-none",
             isRoot && "lg:col-span-5 lg:col-start-1 lg:row-start-1",
             isRoot ? classNames.intro : classNames.page,
             withAnchors && "lg:col-span-3",
@@ -50,9 +50,11 @@ export function Layout({ children }: { children?: ReactNode }) {
               "lg:[&_article>section:last-child]:min-h-[calc(100dvh-12.125rem)]",
           )}
         >
-          {!isRoot && <NavigationBreadcrumb className="lg:hidden" />}
-          {withAnchors && <PopoverNavigationAnchors ref={ref} />}
-          {children}
+          <div className={classNames.content}>
+            {!isRoot && <NavigationBreadcrumb className="lg:hidden" />}
+            {withAnchors && <PopoverNavigationAnchors ref={ref} />}
+            {children}
+          </div>
         </main>
 
         <Sidebar
