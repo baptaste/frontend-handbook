@@ -1,6 +1,7 @@
-import { Link, useLocation } from "@tanstack/react-router"
+import { Link } from "@tanstack/react-router"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 
+import { useResolvedPathname } from "@/lib/hooks/use-resolved-pathname"
 import { cn } from "@/lib/utils/cn"
 import { getAdjacentRoutes } from "@/lib/utils/routes"
 
@@ -8,7 +9,7 @@ const LINK_STYLE =
   "group flex flex-col gap-1 rounded-lg border border-border lg:border-none w-full lg:w-fit p-4 transition-colors hover:bg-accent lg:hover:bg-inherit"
 
 export function NavigationPager({ className }: { className?: string }) {
-  const { pathname } = useLocation()
+  const pathname = useResolvedPathname()
   const { previous, next } = getAdjacentRoutes(pathname)
 
   if (!previous && !next) return null

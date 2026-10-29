@@ -1,4 +1,4 @@
-import { Link, useLocation, useRouter } from "@tanstack/react-router"
+import { Link, useRouter } from "@tanstack/react-router"
 import { Fragment } from "react/jsx-runtime"
 import {
   Breadcrumb,
@@ -8,6 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "../ui/breadcrumb"
+import { useResolvedPathname } from "@/lib/hooks/use-resolved-pathname"
 import {
   getCurrentRoute,
   getParentRoutes,
@@ -26,7 +27,7 @@ export function NavigationBreadcrumb({
   onNavigate?: () => void
 }) {
   const router = useRouter()
-  const { pathname } = useLocation()
+  const pathname = useResolvedPathname()
   const isRoot = isRootRoute(pathname, router)
 
   return (
