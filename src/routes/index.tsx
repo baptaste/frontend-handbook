@@ -66,7 +66,6 @@ function Home() {
             <a
               href={externalPaths.socials.mail}
               rel="external"
-              target="_blank"
               className="ml-1 pretty-link"
             >
               email
