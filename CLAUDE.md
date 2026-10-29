@@ -34,8 +34,8 @@ pnpm check            # prettier --check .
 
 **`src/lib/utils/routes.ts` is the single source of truth for navigation.** `routesConfig` is
 typed against `FileRoutesByTo` from the generated route tree, so a nav entry cannot point at a
-route that does not exist. Sidebar links, breadcrumbs, and parent-route lookups all derive from
-it. When adding a page, create the route file, run `pnpm generate-routes`, then add the entry
+route that does not exist. Sidebar links, breadcrumbs, the pager and parent-route lookups all
+derive from it, and its order is the reading order. When adding a page, create the route file, run `pnpm generate-routes`, then add the entry
 to `routesConfig` — a route file alone will not appear in the navigation.
 
 **Layout shell** — `src/components/layout/`:
@@ -61,7 +61,7 @@ nothing about the layout.
   starts in the matching state, without animating.
 
 **Navigation** — `src/components/navigation/`: `navbar.tsx`, `navigation-links.tsx`,
-`navigation-breadcrumb.tsx`, and `navigation-anchors/`.
+`navigation-breadcrumb.tsx`, `navigation-pager.tsx`, and `navigation-anchors/`.
 
 - The navbar is a fixed, inset bar with a liquid glass effect. It holds the social links, the
   theme toggle and, below `lg`, the menu.
@@ -76,6 +76,13 @@ nothing about the layout.
   `useRouteAnchors` reads them, `useAnchorsObserver` tracks the heading in view and keeps the URL
   hash in sync. They render as a list in the right sidebar on `lg` and as a popover above the
   content below it.
+- A heading becomes active when it reaches 20% from the top of `main`; reaching the bottom of
+  `main` activates the last one, so short last sections need no extra height. The first check on
+  a page waits a frame: run earlier, it would sync a hash from the previous page's scroll position
+  and cancel the router's scroll reset.
+- The pager closes every handbook page with links to the previous and next page, following
+  `getAdjacentRoutes` (each page before its sub-pages). The homepage is left out, so the first
+  page has no "Previous": stepping back to it would collapse the frame.
 
 **`src/components/article.tsx`** — the layout primitives content pages compose rather than
 styling headings ad hoc. Exported as a single namespace object: `Article.Root`, `Article.Header`,
