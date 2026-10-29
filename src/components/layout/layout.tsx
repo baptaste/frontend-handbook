@@ -61,10 +61,7 @@ export function Layout({ children }: { children?: ReactNode }) {
             withAnchors && `lg:block ${classNames.rightSidebar}`,
           )}
         >
-          <div className="space-y-4">
-            <p className="text-sm font-medium">On This Page</p>
-            <SidebarNavigationAnchors ref={ref} />
-          </div>
+          <SidebarNavigationAnchors ref={ref} />
         </Sidebar>
       </div>
     </>
