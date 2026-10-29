@@ -31,14 +31,9 @@ export function Layout({ children }: { children?: ReactNode }) {
     <>
       <Navbar className={classNames.navbar} />
 
-      <div
-        className={cn(
-          "grid grid-cols-1 lg:grid-cols-5 w-full h-dvh",
-          !isHome && "pt-14",
-        )}
-      >
+      <div className="grid grid-cols-1 lg:grid-cols-5 w-full h-dvh">
         <Sidebar className={cn("hidden lg:block", classNames.leftSidebar)}>
-          <NavigationLinks />
+          <NavigationLinks className="[&_svg]:ml-auto" />
         </Sidebar>
 
         <main
@@ -59,7 +54,7 @@ export function Layout({ children }: { children?: ReactNode }) {
           side="right"
           className={cn(
             "hidden",
-            withAnchors && `pt-2 lg:block ${classNames.rightSidebar}`,
+            withAnchors && `lg:block ${classNames.rightSidebar}`,
           )}
         >
           <div className="space-y-4">

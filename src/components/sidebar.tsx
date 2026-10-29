@@ -10,8 +10,8 @@ export function Sidebar({
     <aside
       data-side={side}
       className={cn(
-        "sticky top-14 bottom-0 min-h-[calc(100dvh-56px)] h-full",
-        "data-[side=left]:left-0 data-[side=left]:border-r border-neutral-200 dark:border-neutral-800 data-[side=right]:border-none data-[side=right]:right-0",
+        "sticky top-18.5 bottom-0 min-h-[calc(100dvh-74px)] h-full pt-18.5",
+        "data-[side=left]:left-0 border-neutral-200 dark:border-neutral-800 data-[side=right]:border-none data-[side=right]:right-0",
         className,
       )}
     >

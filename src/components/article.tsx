@@ -76,7 +76,7 @@ function SectionTitle({
   return (
     <h2
       id={id}
-      className={cn("text-xl font-bold scroll-mt-10", className)}
+      className={cn("text-xl font-bold scroll-mt-28.5", className)}
       {...props}
     >
       {children}

@@ -34,7 +34,9 @@ export function getLayoutClassNames({
         : OFF_STYLE,
     ),
     page: cn(
-      "space-y-4 lg:pb-20 overflow-y-auto",
+      // The page scrolls under the navbar (top-4 + h-14.5) so its glass has
+      // something to blur; the padding only clears it at rest
+      "space-y-4 lg:pb-20 overflow-y-auto pt-[calc(4.625rem+1rem)] lg:pt-[calc(4.625rem+2rem)]",
       navigationVisible && "animate-enter-from-top [animation-delay:120ms]",
     ),
     rightSidebar: cn(

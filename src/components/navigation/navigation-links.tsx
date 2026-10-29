@@ -2,10 +2,17 @@ import { Link } from "@tanstack/react-router"
 import { ArrowUpRightIcon } from "lucide-react"
 
 import { routesConfig } from "@/lib/utils/routes"
+import { cn } from "@/lib/utils/cn"
 
-export function NavigationLinks({ onNavigate }: { onNavigate?: () => void }) {
+export function NavigationLinks({
+  className,
+  onNavigate,
+}: {
+  className?: string
+  onNavigate?: () => void
+}) {
   return (
-    <div className="space-y-4 lg:space-y-2">
+    <div className={cn("space-y-4 lg:space-y-2", className)}>
       {routesConfig.map((route) => (
         <Link
           key={route.path}
@@ -18,7 +25,7 @@ export function NavigationLinks({ onNavigate }: { onNavigate?: () => void }) {
           }}
         >
           {route.label}
-          <ArrowUpRightIcon className="opacity-0 group-hover:opacity-100 transition-opacity size-4 min-w-4 ml-auto" />
+          <ArrowUpRightIcon className="opacity-0 group-hover:opacity-100 transition-opacity size-4 min-w-4" />
         </Link>
       ))}
     </div>
