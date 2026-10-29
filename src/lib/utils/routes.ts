@@ -33,16 +33,16 @@ export const routesConfig = [
     label: "Engineering",
     routes: [
       {
+        path: "/engineering/working-with-ai",
+        label: "Working with AI",
+      },
+      {
         path: "/engineering/architecture",
         label: "Architecture",
       },
       {
         path: "/engineering/state-management",
         label: "State management",
-      },
-      {
-        path: "/engineering/working-with-ai",
-        label: "Working with AI",
       },
     ],
   },
