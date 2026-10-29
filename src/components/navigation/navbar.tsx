@@ -127,7 +127,7 @@ export function Navbar({ className }: { className?: string }) {
         </div>
       </div>
 
-      <CollapsibleContent className="lg:hidden h-(--collapsible-panel-height) overflow-y-auto transition-[height] duration-300 ease data-starting-style:h-0 data-ending-style:h-0">
+      <CollapsibleContent className="lg:hidden h-(--collapsible-panel-height) overflow-y-auto transition-[height] duration-300 ease-out data-starting-style:h-0 data-ending-style:h-0 data-ending-style:duration-200">
         <div className="pr-3 h-[calc(100dvh-5.75rem)] flex flex-col gap-4 py-4 text-neutral-950 dark:text-neutral-50">
           <NavigationBreadcrumb onNavigate={() => setIsMenuOpen(false)} />
           <Separator />
