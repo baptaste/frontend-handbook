@@ -1,4 +1,4 @@
-import { MoonIcon, SunIcon } from "lucide-react"
+import { LightbulbIcon, LightbulbOffIcon } from "lucide-react"
 import { Button } from "./ui/button"
 import type { ComponentProps } from "react"
 import { useTheme } from "@/lib/hooks/use-theme"
@@ -15,7 +15,11 @@ export function ThemeToggler({
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       {...props}
     >
-      {theme === "light" ? <MoonIcon /> : <SunIcon />}
+      {theme === "light" ? (
+        <LightbulbOffIcon className="size-4.5" />
+      ) : (
+        <LightbulbIcon className="size-4.5" />
+      )}
     </Button>
   )
 }
